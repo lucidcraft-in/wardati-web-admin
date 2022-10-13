@@ -1,4 +1,5 @@
-import axios from 'axios'
+
+import Axios from '../axios/axios';
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -34,17 +35,23 @@ export const listProducts = (keyword = '', pageNumber = '') => async (
   dispatch
 ) => {
   try {
+    console.log( "in action")
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
-    const { data } = await axios.get(
+    // const { data } = await Axios.get(
+    //   `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+    // )
+    const { data } = await Axios.get(
       `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
     )
-
+ 
+   
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
+    console.log(error)
     dispatch({
       type: PRODUCT_LIST_FAIL,
       payload:
@@ -60,7 +67,7 @@ export const listProductsByCAtegoryPriority =
     try {
       dispatch({ type: PRODUCT_HOME_PAGE_LIST_REQUEST });
 
-      const { data } = await axios.get(
+      const { data } = await Axios.get(
         `/api/products/priority?keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
@@ -82,7 +89,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await Axios.get(`/api/products/${id}`)
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -104,7 +111,7 @@ export const listRelatedProducts = (id) => async (dispatch) => {
   try {
     dispatch({ type: RELATED_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`/api/products/category/${id}`);
+    const { data } = await Axios.get(`/api/products/category/${id}`);
 
     dispatch({
       type: RELATED_PRODUCTS_SUCCESS,
@@ -137,7 +144,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`/api/products/${id}`, config)
+    await Axios.delete(`/api/products/${id}`, config)
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -173,7 +180,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products`, product, config);
+    const { data } = await Axios.post(`/api/products`, product, config);
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -211,7 +218,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(
+    const { data } = await Axios.put(
       `/api/products/${product._id}`,
       product,
       config
@@ -257,7 +264,7 @@ export const createProductReview = (productId, review) => async (
       },
     }
 
-    await axios.post(`/api/products/${productId}/reviews`, review, config)
+    await Axios.post(`/api/products/${productId}/reviews`, review, config)
 
     dispatch({
       type: PRODUCT_CREATE_REVIEW_SUCCESS,
@@ -281,7 +288,7 @@ export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
 
-    const { data } = await axios.get(`/api/products/top`)
+    const { data } = await Axios.get(`/api/products/top`)
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,

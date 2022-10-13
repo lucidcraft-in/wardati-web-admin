@@ -9,7 +9,7 @@ import {
 export const addToCart =
   (id, qty, size =0, color= '') => async (dispatch, getState) => {
   
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await Axios.get(`/api/products/${id}`);
  console.log(data);
 
     dispatch({
