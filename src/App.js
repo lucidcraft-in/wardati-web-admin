@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
-import NavBar from './components/Layout/NavBar';
-import SideBar from './components/Layout/SideBar';
-import DashBoard from './components/DashBoard/DashBoard';
+import NavBar from './components/Admin/Layout/NavBar';
+import SideBar from './components/Admin/Layout/SideBar';
+import DashBoard from './components/Admin/DashBoard/DashBoard';
 import { Container } from 'react-bootstrap'
 
-import Users from './components/Users/UserList';
-import Products from './components/Products/ProductList';
-import Stock from './components/Stock/StockList';
-import Orders from './components/Orders/OrderList';
-import Promotions from './components/Promotions/PromotionList';
-import Category from './components/Category/CategoryList';
-import SubCategory from './components/SubCategory/SubCategoryList';
+import Users from './components/Admin/Users/UserList';
+import Products from './components/Admin/Products/ProductList';
+import Stock from './components/Admin/Stock/StockList';
+import Orders from './components/Admin/Orders/OrderList';
+import Promotions from './components/Admin/Promotions/PromotionList';
+import Category from './components/Admin/Category/CategoryList';
+import SubCategory from './components/Admin/SubCategory/SubCategoryList';
 
 function App() {
   return (
