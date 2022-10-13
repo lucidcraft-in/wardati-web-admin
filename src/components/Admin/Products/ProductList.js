@@ -1,85 +1,162 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+// import { LinkContainer } from 'react-router-bootstrap'
+import { useDispatch, useSelector } from 'react-redux';
+import Message from '../../../components/Message';
+import Loader from '../../../components/Loader';
 import { Link } from 'react-router-dom';
-export default function ProductList() {
+import {
+  listProducts,
+  deleteProduct,
+  createProduct,
+} from '../../../actions/productActions';
+import { PRODUCT_CREATE_RESET } from '../../../constants/productConstants';
+const ProductList = ({ history, match }) => {
+  const pageNumber = 1;
+  const dispatch = useDispatch();
+  const [productsList, setProductList] = useState([]);
+  const [searchValue, setSearch] = useState('');
+
+  const productList = useSelector((state) => state.productList);
+
+  const { loading, error, products, page, pages } = productList;
+
+  const productDelete = useSelector((state) => state.productDelete);
+
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
+
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = productCreate;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    dispatch({ type: PRODUCT_CREATE_RESET });
+
+    // if (!userInfo || !userInfo.isAdmin) {
+    //   history.push('/login');
+    // }
+
+    if (successCreate) {
+      // history.push(`/admin/product/edit/${createdProduct._id}`);
+    } else {
+      dispatch(listProducts('', pageNumber));
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdProduct,
+    pageNumber,
+  ]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deleteProduct(id));
+      //  history.push(`/admin/productlist`);
+    }
+  };
+  const createProductHandler = () => {
+    dispatch(createProduct());
+  };
+
+  const search = (value) => {
+    setSearch(value);
+    let product_ = products.filter(
+      (e) => e.name.toLowerCase().indexOf(value.toLowerCase()) !== -1
+    );
+
+    setProductList(product_);
+  };
   return (
     <div class="main-panel">
-    <div class="content-wrapper">
+      <div class="content-wrapper">
         <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
-           <div class="card">
+            <div class="card">
               <div class="card-body">
-                   <h4 class="card-title">Products</h4>
+                <h4 class="card-title">Products</h4>
                 <div class="float-right">
-                <Link class="nav-link" data-toggle="collapse" to="/admin/products/create" aria-expanded="false" aria-controls="charts">
-              <i class="icon-plus menu-icon"></i>
-              <span class="menu-title">Add Product</span>
-              
-            </Link>
-                   </div>
+                  <Link
+                    class="nav-link"
+                    data-toggle="collapse"
+                    to="/admin/products/create"
+                    aria-expanded="false"
+                    aria-controls="charts"
+                  >
+                    <i class="icon-plus menu-icon"></i>
+                    <span class="menu-title">Add Product</span>
+                  </Link>
+                </div>
                 <div class="table-responsive">
                   <table class="table table-striped">
-                  <thead>
-                        <tr>
-                          <th>
-                            User
-                          </th>
-                          <th>
-                            First name
-                          </th>
-                          <th>
-                            Progress
-                          </th>
-                          <th>
-                            Amount
-                          </th>
-                          <th>
-                            Deadline
-                          </th>
-                        </tr>
+                    <thead>
+                      <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>BRAND</th>
+                      </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                          <td  class="py-1">
-                           ddf
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                           jjhhj
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="py-1">
-                           rerer
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                           rere
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
+                      {(searchValue.length > 0 ? productsList : products).map(
+                        (product) => (
+                          // <LinkContainer to={`/admin/product/detail/${product._id}`}>
+                          <tr key={product._id}>
+                            <td>{product.name}</td>
+                            <td>AED {product.price}</td>
+                            {/* <td>{product.category}</td> */}
+                            <td>{product.brand}</td>
+                            <td>
+                              <div className="row">
+                                <div className="col">
+                                  <Link
+                                    class="nav-link"
+                                    to={`/admin/product/edit/${product._id}`}
+                                  >
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-dark btn-sm"
+                                    >
+                                      Edit
+                                    </button>
+                                  </Link>
+                                </div>
+                                <div className="col">
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-danger btn-sm"
+                                    onClick={() => deleteHandler(product._id)}
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                            <td></td>
+                          </tr>
+                          // </LinkContainer>
+                        )
+                      )}
                     </tbody>
-                    </table>
-                  </div>
+                  </table>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
-      </div>
-  )
-}
+    </div>
+  );
+};
+
+export default ProductList;
