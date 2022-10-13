@@ -8,6 +8,7 @@ import { Container } from 'react-bootstrap'
 
 import Users from './components/Admin/Users/UserList';
 import Products from './components/Admin/Products/ProductList';
+import CreateProduct from './components/Admin/Products/CreateProduct';
 import Stock from './components/Admin/Stock/StockList';
 import Orders from './components/Admin/Orders/OrderList';
 import Promotions from './components/Admin/Promotions/PromotionList';
@@ -28,6 +29,7 @@ function App() {
           <Route exact path='/' element={< DashBoard />}></Route>
           <Route exact path='/admin/users' element={< Users />}></Route>
           <Route exact path='/admin/products' element={< Products />}></Route>
+          <Route exact path='/admin/products/create' element={< CreateProduct />}></Route>
           <Route exact path='/admin/stock' element={< Stock />}></Route>
           <Route exact path='/admin/orders' element={< Orders />}></Route>
           <Route exact path='/admin/promotions' element={< Promotions />}></Route>
