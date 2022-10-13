@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function StockList() {
   return (
@@ -9,6 +10,13 @@ export default function StockList() {
            <div class="card">
               <div class="card-body">
                    <h4 class="card-title">Stock</h4>
+                   <div class="float-right">
+                <Link class="nav-link" data-toggle="collapse" to="/admin/stock/create" aria-expanded="false" aria-controls="charts">
+              <i class="icon-plus menu-icon"></i>
+              <span class="menu-title">Add Stock</span>
+              
+            </Link>
+                   </div>
                 
                 <div class="table-responsive">
                   <table class="table table-striped">

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function SubCategoryList() {
   return (
@@ -8,7 +9,14 @@ export default function SubCategoryList() {
           <div class="col-lg-12 grid-margin stretch-card">
            <div class="card">
               <div class="card-body">
-                   <h4 class="card-title">Category</h4>
+                   <h4 class="card-title">SubCategory</h4>
+                   <div class="float-right">
+                <Link class="nav-link" data-toggle="collapse" to="/admin/subcategory/create" aria-expanded="false" aria-controls="charts">
+              <i class="icon-plus menu-icon"></i>
+              <span class="menu-title">Add SubCategory</span>
+              
+            </Link>
+                   </div>
                 
                 <div class="table-responsive">
                   <table class="table table-striped">

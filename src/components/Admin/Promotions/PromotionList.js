@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function PromotionList() {
   return (
@@ -9,6 +10,13 @@ export default function PromotionList() {
            <div class="card">
               <div class="card-body">
                    <h4 class="card-title">Promotions</h4>
+                   <div class="float-right">
+                <Link class="nav-link" data-toggle="collapse" to="/admin/promotions/create" aria-expanded="false" aria-controls="charts">
+              <i class="icon-plus menu-icon"></i>
+              <span class="menu-title">Add Promotions</span>
+              
+            </Link>
+                   </div>
                 
                 <div class="table-responsive">
                   <table class="table table-striped">
