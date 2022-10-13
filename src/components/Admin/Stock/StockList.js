@@ -8,7 +8,7 @@ export default function StockList() {
           <div class="col-lg-12 grid-margin stretch-card">
            <div class="card">
               <div class="card-body">
-                   <h4 class="card-title">Users</h4>
+                   <h4 class="card-title">Stock</h4>
                 
                 <div class="table-responsive">
                   <table class="table table-striped">
@@ -32,25 +32,31 @@ export default function StockList() {
                     <tbody>
                     <tr>
                           <td  class="py-1">
-                           Athul
+                           jk
                           </td>
                           <td>
-                            athulsample@gmail.com
+                            jk
                           </td>
                           <td>
-                           Sam
+                           red
+                          </td>
+                          <td>
+                           10
                           </td>
                           
                       </tr>
                       <tr>
                           <td  class="py-1">
-                           jon
+                           jk
                           </td>
                           <td>
-                            jontest@gmail.com
+                            jk
                           </td>
                           <td>
-                           Stalin
+                           green
+                          </td>
+                          <td>
+                           10
                           </td>
                           
                       </tr>
