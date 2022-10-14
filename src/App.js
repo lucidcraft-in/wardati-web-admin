@@ -12,6 +12,7 @@ import CreateProduct from './components/Admin/Products/CreateProduct';
 import Stock from './components/Admin/Stock/StockList';
 import CreateStock from './components/Admin/Stock/CreateStock';
 import Orders from './components/Admin/Orders/OrderList';
+import Order from './components/Admin/Orders/Order';
 import Promotions from './components/Admin/Promotions/PromotionList';
 import CreatePromotion from './components/Admin/Promotions/CreatePromotion';
 import Category from './components/Admin/Category/CategoryList';
@@ -39,6 +40,7 @@ function App() {
           <Route exact path='/admin/stock' element={< Stock />}></Route>
           <Route exact path='/admin/stock/create' element={< CreateStock />}></Route>
           <Route exact path='/admin/orders' element={< Orders />}></Route>
+          <Route exact path='/admin/viewOrder/:id' element={< Order />}></Route>
           <Route exact path='/admin/promotions' element={< Promotions />}></Route>
           <Route exact path='/admin/promotions/create' element={< CreatePromotion />}></Route>
           <Route exact path='/admin/category' element={< Category />}></Route>
