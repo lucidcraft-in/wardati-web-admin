@@ -35,7 +35,7 @@ export const listProducts = (keyword = '', pageNumber = '') => async (
   dispatch
 ) => {
   try {
-    console.log( "in action")
+  
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
     // const { data } = await Axios.get(
@@ -166,6 +166,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 
 export const createProduct = (product) => async (dispatch, getState) => {
   try {
+    console.log("check product data",product)
     dispatch({
       type: PRODUCT_CREATE_REQUEST,
     });
@@ -174,6 +175,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
+   
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
@@ -181,7 +183,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
     };
 
     const { data } = await Axios.post(`/api/products`, product, config);
-
+    
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,

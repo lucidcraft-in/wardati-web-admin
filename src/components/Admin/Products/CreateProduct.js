@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SetImage from './setImage';
 import SetStock from './setStock';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate  } from "react-router-dom";
 import {
 
   createProduct,
@@ -11,7 +12,9 @@ import { listCategories, createCategory, deleteCategory } from "../../../actions
 import {
   listSubCategories
 } from '../../../actions/subcategoryAction';
-const CreateProduct = ({ history }) => {
+const CreateProduct = ({ }) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0); ;
   const [sellingPrice, setSellingPrice] = useState(0);
@@ -68,7 +71,7 @@ const CreateProduct = ({ history }) => {
    
   }, [
     dispatch,
-    history,
+  
 
   ])
   
@@ -103,15 +106,15 @@ const CreateProduct = ({ history }) => {
         imagesArray,
         brand,
         category,
-         selectedSubCategory,
+        selectedSubCategory,
         description,
         countInStock,
         stockArray,
         promotionPercentage,
       })
     );
-     
-    history.push('/admin/productlist');
+    navigate('/admin/products');
+   
   };
 
   const addImage = () => {
@@ -148,7 +151,7 @@ const CreateProduct = ({ history }) => {
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Add Product</h4>
-                <form class="forms-sample">
+                <form class="forms-sample" onSubmit={submitHandler}>
                     <div class="form-group">
                     <label for="exampleInputName1">Name</label>
                     

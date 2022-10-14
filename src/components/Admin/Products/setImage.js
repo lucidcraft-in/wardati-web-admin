@@ -17,7 +17,7 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
           'Content-Type': 'multipart/form-data',
         },
       };
-
+      console.log("check upload form data",formData);
       const { data } = await Axios.post('/api/upload', formData, config);
 
       updateData(data, 'url');
@@ -46,14 +46,14 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
   return (
     <div>
       {' '}
-     
+     <form id="image">
         <label>Upload Image</label>
         <input
           type="file"
           id="image-file"
           class="file-upload-default"
           name="img[]"
-          required={imagesArray[index]['url'] ? false : true}
+          // required={imagesArray[index]['url'] ? false : true}
           onChange={uploadFileHandler}
         />
         <div class="input-group col-xs-12">
@@ -94,6 +94,7 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
           <i aria-hidden="true" className="text-danger fa fa-minus-circle"></i>
         </a>
       </div>
+      </form>
     </div>
   );
 }
