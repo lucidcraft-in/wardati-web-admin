@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import { logout } from '../../../actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
 export default function SideBar() {
+  const dispatch = useDispatch()
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
   return (
       <>
        <div class="theme-setting-wrapper">
@@ -239,8 +244,8 @@ export default function SideBar() {
             </Link>
             
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+          <li class="nav-item" >
+            <a class="nav-link" onClick={logoutHandler}>
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Logout</span>
             </a>
