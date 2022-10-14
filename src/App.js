@@ -18,6 +18,7 @@ import Category from './components/Admin/Category/CategoryList';
 import CreateCategory from './components/Admin/Category/CreateCategory';
 import SubCategory from './components/Admin/SubCategory/SubCategoryList';
 import CreateSubCategory from './components/Admin/SubCategory/CreateSubCategory';
+import LoginScreen from './components/LoginScreen';
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
     <div className="container-fluid page-body-wrapper"> 
     <SideBar />
     <div class="main-panel"> 
-    <div class="content-wrapper">
+            <div class="content-wrapper">
+            
     <Routes>
           <Route exact path='/' element={< DashBoard />}></Route>
           <Route exact path='/admin/users' element={< Users />}></Route>
@@ -43,7 +45,7 @@ function App() {
           <Route exact path='/admin/category/create' element={< CreateCategory />}></Route>
           <Route exact path='/admin/subcategory' element={< SubCategory />}></Route>
           <Route exact path='/admin/subcategory/create' element={< CreateSubCategory />}></Route>
-          
+          <Route exact path="/login" element={<LoginScreen />} />       
    </Routes></div>
     </div>
   </div>

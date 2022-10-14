@@ -1,4 +1,4 @@
-import axios from 'axios';
+import Axios from '../axios/axios';
 import {
   SUB_CATEGORY_LIST_REQUEST,
   SUB_CATEGORY_LIST_SUCCESS,
@@ -24,7 +24,7 @@ export const listSubCategories =
     try {
       dispatch({ type: SUB_CATEGORY_LIST_REQUEST });
 
-      const { data } = await axios.get(
+      const { data } = await Axios.get(
         `/api/subcategory?keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
@@ -47,7 +47,7 @@ export const listSubCategoryDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: SUB_CATEGORY_DETAILS_REQUEST });
      
-    const { data } = await axios.get(`/api/subcategory/${id}`);
+    const { data } = await Axios.get(`/api/subcategory/${id}`);
 
     dispatch({
       type: SUB_CATEGORY_DETAILS_SUCCESS,
@@ -80,7 +80,7 @@ export const deleteSubCategory = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/subcategory/${id}`, config);
+    await Axios.delete(`/api/subcategory/${id}`, config);
 
     dispatch({
       type: SUB_CATEGORY_DELETE_SUCCESS,
@@ -118,7 +118,7 @@ export const createSubCategory = (promotion) => async (dispatch, getState) => {
 
    
 
-    const { data } = await axios.post(`/api/subcategory`, promotion, config);
+    const { data } = await Axios.post(`/api/subcategory`, promotion, config);
 
     console.log(data);
 
@@ -158,7 +158,7 @@ export const updateSubCategory = (subCategory) => async (dispatch, getState) => 
       },
     };
 
-    const { data } = await axios.put(
+    const { data } = await Axios.put(
       `/api/subcategory/${subCategory._id}`,
       subCategory,
       config

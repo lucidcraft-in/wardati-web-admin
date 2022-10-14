@@ -1,4 +1,4 @@
-import axios from 'axios'
+import Axios from '../axios/axios';
 import {
     CATEGORY_LIST_REQUEST,
     CATEGORY_LIST_SUCCESS,
@@ -26,9 +26,9 @@ export const listCategories = () => async (
     try {
       dispatch({ type: CATEGORY_LIST_REQUEST })
   
-      const { data } = await axios.get(
-        `/api/categories/`
+      const { data } = await Axios.get(`/api/categories/`
       )
+       
   
       dispatch({
         type: CATEGORY_LIST_SUCCESS,
@@ -48,7 +48,7 @@ export const listCategoryDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`/api/categories/${id}`)
+    const { data } = await Axios.get(`/api/categories/${id}`)
 
     dispatch({
       type: CATEGORY_DETAILS_SUCCESS,
@@ -80,7 +80,7 @@ export const createCategory = (category) => async (dispatch, getState) => {
         },
       };
   
-      const { data } = await axios.post(`/api/categories`, category, config);
+      const { data } = await Axios.post(`/api/categories`, category, config);
   
       dispatch({
         type: CATEGORY_CREATE_SUCCESS,
@@ -118,7 +118,7 @@ export const updateCategory = (category) => async (dispatch, getState) => {
         },
       }
   
-      const { data } = await axios.put(
+      const { data } = await Axios.put(
         `/api/categories/${category._id}`,
         category,
         config
@@ -160,7 +160,7 @@ export const deleteCategory = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`/api/categories/${id}`, config)
+    await Axios.delete(`/api/categories/${id}`, config)
 
     dispatch({
       type: CATEGORY_DELETE_SUCCESS,
