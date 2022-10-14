@@ -1,6 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+ import { useDispatch,useSelector } from 'react-redux';
+ import {listProducts} from '../../../actions/productActions';
+ import {createStock} from '../../../actions/stockAction';
+ import { useNavigate } from "react-router-dom";
 
-export default function CreateStock() {
+export default function CreateStock({history}) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [product, setProduct] = useState('');
+  const [size, setSize] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [count, setCount] = useState(0);
+  
+  const [sizeList, setSizeList] = useState([]);
+
+  useEffect(() => {
+    dispatch(listProducts(''));
+ }, [])
+
+ const productList = useSelector((state) => state.productList);
+ const { loading, error, products, page, pages } = productList;
+
+ const selectProduct = (value) => {
+  setProduct(value);
+
+  let product = products.find((e) => e._id === value);
+
+  setSizeList(product.stock);
+}
+
+const submitHandler = (e) => {
+  e.preventDefault();
+  dispatch(
+    createStock({
+      product,
+      size,
+      price,
+      count,
+    })
+  );
+
+  navigate('/admin/stock');
+};
+
+
   return (
     <div class="main-panel">        
     <div class="content-wrapper">
@@ -9,29 +54,43 @@ export default function CreateStock() {
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Create Stock</h4>
-                <form class="forms-sample">
+                <form class="forms-sample" onSubmit={submitHandler}>
                     
                     <div class="form-group">
                       <label for="exampleSelectProduct">Product</label>
-                        <select class="form-control" id="exampleSelectProduct">
-                          <option>product 1</option>
-                          <option>product 2</option>
+                        <select class="form-control" id="exampleSelectProduct" value={product}
+                  onChange={(e) => selectProduct(e.target.value)}
+                  required={true}>
+                          <option>select product</option>
+                          {products.map((obj) => (
+                    <option value={obj._id} key={obj._id}>
+                      {obj.name}
+                    </option>
+                  ))}
                         </select>
                       </div>
                       <div class="form-group">
                       <label for="exampleSelectsize">Size</label>
-                        <select class="form-control" id="exampleSelectsize">
-                          <option>size 1</option>
-                          <option>size 2</option>
+                        <select class="form-control" id="exampleSelectsize"  value={size}
+                  onChange={(e) => setSize(e.target.value)}
+                  required={true}>
+                          <option>select size</option>
+                          <option>small</option>
+                          <option>medium</option>
+                          <option>large</option>
                         </select>
                       </div>
                       <div class="form-group">
-                      <label for="exampleInputColor">Color</label>
-                      <input type="color" class="form-control" id="exampleInputColor" placeholder="Color"/>
+                      <label for="exampleInputPrice">Price</label>
+                      <input type="number" class="form-control" id="exampleInputPrice" placeholder="Price" value={price}
+                             onChange={(e) => setPrice(e.target.value)}
+                             required={true}/>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputCount4">Count</label>
-                      <input type="number" class="form-control" id="exampleInputCount4" placeholder="Count"/>
+                      <input type="number" class="form-control" id="exampleInputCount4" placeholder="Count" value={count}
+                             onChange={(e) => setCount(e.target.value)}
+                             required={true}/>
                     </div>
                     
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>

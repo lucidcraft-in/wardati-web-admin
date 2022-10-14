@@ -1,4 +1,4 @@
-import axios from 'axios';
+import Axios from '../axios/axios';
 import {
   STOCK_LIST_REQUEST,
   STOCK_LIST_SUCCESS,
@@ -27,7 +27,7 @@ export const listStock =
     try {
       dispatch({ type: STOCK_LIST_REQUEST });
 
-      const { data } = await axios.get(
+      const { data } = await Axios.get(
         `/api/stock?keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
@@ -53,7 +53,7 @@ export const listStockDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: STOCK_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/stock/${id}`);
+    const { data } = await Axios.get(`/api/stock/${id}`);
 
     dispatch({
       type: STOCK_DETAILS_SUCCESS,
@@ -74,7 +74,7 @@ export const listStockDetailsByProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: STOCK_DETAILS_BY_PRODUCT_REQUEST });
 
-    const { data } = await axios.get(`/api/stock/product/${id}`);
+    const { data } = await Axios.get(`/api/stock/product/${id}`);
 
     dispatch({
       type: STOCK_DETAILS_BY_PRODUCT_SUCCESS,
@@ -110,7 +110,7 @@ export const deleteStock = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/stock/${id}`, config);
+    await Axios.delete(`/api/stock/${id}`, config);
 
     dispatch({
       type: STOCK_DELETE_SUCCESS,
@@ -134,6 +134,7 @@ export const deleteStock = (id) => async (dispatch, getState) => {
 
 
 export const createStock = (stock) => async (dispatch, getState) => {
+  console.log('sam')
   try {
     dispatch({
       type: STOCK_CREATE_REQUEST,
@@ -142,14 +143,14 @@ export const createStock = (stock) => async (dispatch, getState) => {
     const {
       userLogin: { userInfo },
     } = getState();
-
+console.log(userInfo,'userInfo')
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
-    const { data } = await axios.post(`/api/stock`, stock, config);
+    const { data } = await Axios.post(`/api/stock`, stock, config);
 
     dispatch({
       type: STOCK_CREATE_SUCCESS,
@@ -190,7 +191,7 @@ export const updateStock = (stock) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(
+    const { data } = await Axios.put(
       `/api/stock/${stock._id}`,
       stock,
       config

@@ -1,7 +1,68 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { listCategories, createCategory,deleteCategory } from "../../../actions/categoryActions";
+import { CATEGORY_CREATE_RESET } from "../../../constants/categoryConstants";
 
-export default function CategoryList() {
+
+export default function CategoryList({ history, match }) {
+  const dispatch = useDispatch()
+  const categoryList = useSelector((state) => state.categoryList)
+  const { loading, error, categories } = categoryList;
+
+  const categoryDelete = useSelector((state) => state.categoryDelete)
+
+  const {
+      loading: loadingDelete,
+      error: errorDelete,
+      success: successDelete,
+    } = categoryDelete
+
+  console.log(categories)
+
+  const categoryCreate = useSelector((state) => state.categoryCreate)
+  const {
+      loading: loadingCreate,
+      error: errorCreate,
+      success: successCreate,
+      category: createCategory,
+  } = categoryCreate;
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  useEffect(() => {
+    dispatch({ type: CATEGORY_CREATE_RESET })
+
+    if (!userInfo || !userInfo.isAdmin) {
+      history.push('/login')
+    }
+
+    if (successCreate) {
+      history.push(`/admin/category/${createCategory._id}/edit`)
+    } else {
+      dispatch(listCategories(''))
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createCategory,
+   
+])
+
+const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deleteCategory(id))
+    }
+  }
+
+const createCategoryHandler = () => {
+    dispatch(createCategory())
+}
+
   return (
     <div className='main-panel'>
       <div class="content-wrapper">
@@ -28,32 +89,13 @@ export default function CategoryList() {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                          <td  class="py-1">
-                           sam
-                          </td>
-                          <td>
-                           sdf
-                          </td>
-                          <td>
-                           low
-                          </td>
-                          
-                          
+                    {categories.map((category) => (
+                      <tr key={category._id}>
+                      <td>{category.categoryName}</td>
+                      <td> {category.title}</td>
+                      <td>{category.priority}</td>
                       </tr>
-                      <tr>
-                          <td  class="py-1">
-                           jon
-                          </td>
-                          <td>
-                            dfgh
-                          </td>
-                          <td>
-                           high
-                          </td>
-                         
-                          
-                      </tr>
+                    ))}
                      
                     </tbody>
                     </table>
