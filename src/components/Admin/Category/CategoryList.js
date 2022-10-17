@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { listCategories, createCategory,deleteCategory } from "../../../actions/categoryActions";
 import { CATEGORY_CREATE_RESET } from "../../../constants/categoryConstants";
+import {  Button} from 'react-bootstrap';
 
 
 export default function CategoryList({ history, match }) {
@@ -39,7 +40,7 @@ export default function CategoryList({ history, match }) {
     }
 
     if (successCreate) {
-      history.push(`/admin/category/${createCategory._id}/edit`)
+      history.push(`/admin/category/edit/${createCategory._id}`)
     } else {
       dispatch(listCategories(''))
     }
@@ -94,6 +95,27 @@ const createCategoryHandler = () => {
                       <td>{category.categoryName}</td>
                       <td> {category.title}</td>
                       <td>{category.priority}</td>
+                      <td>
+                      <td>
+                        <Link
+                          to={`/admin/category/edit/${category._id}`}
+                          
+                        >
+                          <Button variant="light" className="btn-sm">
+                            <i className="fas fa-edit"></i>
+                            EDIT
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="danger"
+                          className="btn-sm"
+                          onClick={() => deleteHandler(category._id)}
+                        >
+                          DELETE
+                          <i className="fas fa-trash"></i>
+                        </Button>
+                      </td>
+                      </td>
                       </tr>
                     ))}
                      

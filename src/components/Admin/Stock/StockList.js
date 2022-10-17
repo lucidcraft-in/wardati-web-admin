@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listStock, deleteStock, createStock } from '../../../actions/stockAction';
 import {listProducts} from '../../../actions/productActions';
 import { useNavigate } from "react-router-dom";
+import {  Button} from 'react-bootstrap';
 
 export default function StockList({ history, match }) {
 
@@ -120,6 +121,24 @@ export default function StockList({ history, match }) {
                           {stock.price}
                         </td>
                         <td>{stock.count}</td>
+                        <td>
+                        <td>
+                          <Link to={`/admin/stock/edit/${stock._id}`}>
+                            <Button variant="light" className="btn-sm">
+                              <i className="fas fa-edit"></i>
+                              Edit
+                            </Button>
+                          </Link>
+                          <Button
+                            variant="danger"
+                            className="btn-sm"
+                            onClick={() => deleteHandler(stock._id)}
+                          >
+                            Delete
+                            <i className="fas fa-trash"></i>
+                          </Button>
+                        </td>
+                        </td>
                         
                       </tr>
                     )
