@@ -1,7 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { Table, Button, Row, Col } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import {
+  listSubCategories,
+  deleteSubCategory,
+  createSubCategory,
+} from '../../../actions/subcategoryAction';
 import { Link } from 'react-router-dom';
+import { SUB_CATEGORY_CREATE_RESET } from '../../../constants/subCategoryConstant';
 
-export default function SubCategoryList() {
+export default function SubCategoryList({ history, match }) {
+
+  const pageNumber =  1;
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const subCategoryList = useSelector((state) => state.subCategoryList);
+  const { loading, error, subCategories, page, pages } = subCategoryList;
+
+    
+  const subCategoryDelete = useSelector((state) => state.subCategoryDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = subCategoryDelete;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    dispatch({ type: SUB_CATEGORY_CREATE_RESET });
+
+    if (!userInfo || !userInfo.isAdmin) {
+      navigate('/login');
+    }
+
+    dispatch(listSubCategories('',pageNumber ));
+  }, [dispatch, history, userInfo,pageNumber ]);
+   
+
+
+    const deleteHandler = (id) => {
+      if (window.confirm('Are you sure')) {
+        dispatch(deleteSubCategory(id));
+      }
+  };
   return (
     <div className='main-panel'>
       <div class="content-wrapper">
@@ -28,32 +75,33 @@ export default function SubCategoryList() {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                          <td  class="py-1">
-                           jk
-                          </td>
-                          <td>
-                           sdf
-                          </td>
-                          <td>
-                           jon
-                          </td>
+                    {subCategories.map((sub) => (
+                    <tr key={sub._id}>
+                      <td>{sub.name}</td>
+                      <td> {sub.tittle}</td>
+                      <td> {sub.category_[0].categoryName}</td>
+                      <td>
+                        <Link
+                          to={`/admin/subcategory/edit/${sub._id}`}
                           
-                          
-                      </tr>
-                      <tr>
-                          <td  class="py-1">
-                           sk
-                          </td>
-                          <td>
-                            dfgh
-                          </td>
-                          <td>
-                           sam
-                          </td>
-                         
-                          
-                      </tr>
+                        >
+                          <Button variant="light" className="btn-sm">
+                            <i className="fas fa-edit"></i>
+                            EDIT
+                          </Button>
+                        </Link>
+                        <Button
+                          variant="danger"
+                          className="btn-sm"
+                          onClick={() => deleteHandler(sub._id)}
+                        >
+                          DELETE
+                          <i className="fas fa-trash"></i>
+                        </Button>
+                      </td>
+                      
+                    </tr>
+                  ))}
                      
                     </tbody>
                     </table>

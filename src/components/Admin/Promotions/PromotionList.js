@@ -1,7 +1,81 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Table, Button, Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import {
+  listPromotions,
+  deletePromotion,
+  createPromotion,
+} from '../../../actions/promotionAction';
+import { PROMOTION_CREATE_RESET } from '../../../constants/promotionConstant';
 
-export default function PromotionList() {
+
+export default function PromotionList({ history, match }) {
+
+   const pageNumber = match.params.pageNumber || 1;
+
+  const dispatch = useDispatch();
+  
+    const promotionList = useSelector((state) => state.promotionList);
+  const { loading, error, promotions, page, pages } = promotionList;
+  
+  console.log(promotions,'promotions')
+  const promotionDelete = useSelector((state) => state.promotionDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = promotionDelete;
+
+  const promotionCreate = useSelector((state) => state.promotionCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    promotion: createdPromotion,
+  } = promotionCreate;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+ 
+
+  useEffect(() => {
+    dispatch({ type: PROMOTION_CREATE_RESET });
+
+    if (!userInfo || !userInfo.isAdmin) {
+      history.push('/login');
+    }
+
+    if (successCreate) {
+      history.push(`/admin/promotion/${createdPromotion._id}/edit`);
+    } else {
+      dispatch(listPromotions(''));
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdPromotion,
+    
+  ]);
+
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure')) {
+      dispatch(deletePromotion(id));
+    }
+  };
+
+  const createPromotionHandler = () => {
+    dispatch(createPromotion());
+  };
+
+ 
+
+
   return (
     <div className='main-panel'>
       <div class="content-wrapper">
@@ -28,32 +102,32 @@ export default function PromotionList() {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                          <td  class="py-1">
-                           sam
-                          </td>
-                          <td>
-                            4512785623
-                          </td>
-                          <td>
-                           kl34
-                          </td>
-                          
-                          
+                    {promotions.map((promotion) => (
+                    
+                      <tr key={promotion._id}>
+                        <td>{promotion.name}</td>
+                        <td> {promotion.phone}</td>
+                        <td>{promotion.code}</td>
+
+                        {/* <td>
+                          <LinkContainer
+                            to={`/admin/promotion/edit/${promotion._id}`}
+                          >
+                            <Button variant="light" className="btn-sm">
+                              <i className="fas fa-edit"></i>
+                            </Button>
+                          </LinkContainer>
+                          <Button
+                            variant="danger"
+                            className="btn-sm"
+                            onClick={() => deleteHandler(promotion._id)}
+                          >
+                            <i className="fas fa-trash"></i>
+                          </Button>
+                        </td> */}
                       </tr>
-                      <tr>
-                          <td  class="py-1">
-                           jon
-                          </td>
-                          <td>
-                            8956231245
-                          </td>
-                          <td>
-                           gk12
-                          </td>
-                         
-                          
-                      </tr>
+                    
+                  ))}
                      
                     </tbody>
                     </table>

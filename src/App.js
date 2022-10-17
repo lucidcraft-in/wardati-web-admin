@@ -17,8 +17,10 @@ import Promotions from './components/Admin/Promotions/PromotionList';
 import CreatePromotion from './components/Admin/Promotions/CreatePromotion';
 import Category from './components/Admin/Category/CategoryList';
 import CreateCategory from './components/Admin/Category/CreateCategory';
+import EditCategory from './components/Admin/Category/EditCategory';
 import SubCategory from './components/Admin/SubCategory/SubCategoryList';
 import CreateSubCategory from './components/Admin/SubCategory/CreateSubCategory';
+import EditSubCategory from './components/Admin/SubCategory/EditSubCategory';
 import LoginScreen from './components/LoginScreen';
 
 function App() {
@@ -45,8 +47,10 @@ function App() {
           <Route exact path='/admin/promotions/create' element={< CreatePromotion />}></Route>
           <Route exact path='/admin/category' element={< Category />}></Route>
           <Route exact path='/admin/category/create' element={< CreateCategory />}></Route>
+          <Route exact path='/admin/category/edit/:id' element={< EditCategory />}></Route>
           <Route exact path='/admin/subcategory' element={< SubCategory />}></Route>
           <Route exact path='/admin/subcategory/create' element={< CreateSubCategory />}></Route>
+          <Route exact path='/admin/subcategory/edit/:id' element={< EditSubCategory />}></Route>
           <Route exact path="/login" element={<LoginScreen />} />       
    </Routes></div>
     </div>
