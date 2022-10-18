@@ -79,85 +79,83 @@ const ProductList = ({ history, match }) => {
     setProductList(product_);
   };
   return (
-    
-        <div class="row">
-          <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Products</h4>
-                <div class="float-right">
-                  <Link
-                    class="nav-link"
-                    data-toggle="collapse"
-                    to="/admin/products/create"
-                    aria-expanded="false"
-                    aria-controls="charts"
-                  >
-                    {' '}
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Products</h4>
+            <div class="float-right">
+              <Link
+                class="nav-link"
+                data-toggle="collapse"
+                to="/lz-admin/products/create"
+                aria-expanded="false"
+                aria-controls="charts"
+              >
+                {' '}
                 <button type="button" class="btn btn-primary btn-md btn-block">
                   <i class="icon-plus menu-icon"></i>
                   Add Product
                 </button>
-                  </Link>
-                </div>
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>NAME</th>
-                        <th>PRICE</th>
-                        <th>BRAND</th>
+              </Link>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>BRAND</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(searchValue.length > 0 ? productsList : products).map(
+                    (product) => (
+                      // <LinkContainer to={`/admin/product/detail/${product._id}`}>
+                      <tr key={product._id}>
+                        <td>{product.name}</td>
+                        <td>AED {product.price}</td>
+                        {/* <td>{product.category}</td> */}
+                        <td>{product.brand}</td>
+                        <td>
+                          <div className="d-flex flex-row">
+                            <div className="p-2">
+                              {' '}
+                              <Link
+                                class="nav-link"
+                                to={`/lz-admin/product/edit/${product._id}`}
+                              >
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-dark btn-sm"
+                                >
+                                  Edit
+                                </button>
+                              </Link>
+                            </div>
+                            <div className="p-2">
+                              {' '}
+                              <button
+                                type="button"
+                                class="btn btn-outline-danger btn-sm"
+                                onClick={() => deleteHandler(product._id)}
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </div>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {(searchValue.length > 0 ? productsList : products).map(
-                        (product) => (
-                          // <LinkContainer to={`/admin/product/detail/${product._id}`}>
-                          <tr key={product._id}>
-                            <td>{product.name}</td>
-                            <td>AED {product.price}</td>
-                            {/* <td>{product.category}</td> */}
-                            <td>{product.brand}</td>
-                            <td>
-                              <div className="d-flex flex-row">
-                                <div className="p-2">
-                                {' '}
-                                  <Link
-                                    class="nav-link"
-                                    to={`/admin/product/edit/${product._id}`}
-                                  >
-                                    <button
-                                      type="button"
-                                      class="btn btn-outline-dark btn-sm"
-                                    >
-                                      Edit
-                                    </button>
-                                  </Link>
-                                </div>
-                                <div className="p-2">
-                                {' '}
-                                  <button
-                                    type="button"
-                                    class="btn btn-outline-danger btn-sm"
-                                    onClick={() => deleteHandler(product._id)}
-                                  >
-                                    Delete
-                                  </button>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          // </LinkContainer>
-                        )
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                      // </LinkContainer>
+                    )
+                  )}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-     
+      </div>
+    </div>
   );
 };
 

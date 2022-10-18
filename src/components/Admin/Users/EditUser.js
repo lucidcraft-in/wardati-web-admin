@@ -28,7 +28,7 @@ const {  id } = useParams();
     useEffect(() => {
       if (successUpdate) {
         dispatch({ type: USER_UPDATE_RESET });
-        history.push('/admin/userlist');
+        history.push('/lz-admin/userlist');
       } else {
         if (!user.name || user._id !== id) {
           dispatch(getUserDetails(id));
@@ -43,7 +43,7 @@ const {  id } = useParams();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateUser({ _id: id, name, email, isAdmin }));
-      navigate('/admin/users');
+      navigate('/lz-admin/users');
   };
 
 

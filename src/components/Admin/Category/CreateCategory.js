@@ -26,7 +26,7 @@ export default function CreateCategory({ history }) {
       })
     );
      
-    navigate('/admin/category');
+    navigate('/lz-admin/category');
 };
 
   return (

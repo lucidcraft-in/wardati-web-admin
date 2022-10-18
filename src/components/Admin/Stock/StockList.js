@@ -78,88 +78,79 @@ export default function StockList({ history, match }) {
  
 
   return (
-    
-        <div class="row">
-          <div class="col-lg-12 grid-margin stretch-card">
-           <div class="card">
-              <div class="card-body">
-                   <h4 class="card-title">Stock</h4>
-                   <div class="float-right">
-                <Link class="nav-link" data-toggle="collapse" to="/admin/stock/create" aria-expanded="false" aria-controls="charts">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Stock</h4>
+            <div class="float-right">
+              <Link
+                class="nav-link"
+                data-toggle="collapse"
+                to="/lz-admin/stock/create"
+                aria-expanded="false"
+                aria-controls="charts"
+              >
                 {' '}
                 <button type="button" class="btn btn-primary btn-md btn-block">
                   <i class="icon-plus menu-icon"></i>
                   Add Stock
                 </button>
-              
-            </Link>
-                   </div>
-                
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                  <thead>
-                        <tr>
-                          <th>
-                           Product Name
-                          </th>
-                          <th>
-                             Size
-                          </th>
-                          <th>
-                            Price
-                          </th>
-                          <th>
-                            Count
-                          </th>
-                          
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {(stockLists.length > 0 ? stockLists : stocks).map(
+              </Link>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(stockLists.length > 0 ? stockLists : stocks).map(
                     (stock) => (
                       <tr key={stock._id}>
                         <td>{stock.product_[0].name}</td>
                         <td> {stock.size}</td>
-                        <td>
-                          {stock.price}
-                        </td>
+                        <td>{stock.price}</td>
                         <td>{stock.count}</td>
                         <td>
-                        <div class="d-flex flex-row">
-                        <div class="p-2">
-                            {' '}
-                          <Link to={`/admin/stock/edit/${stock._id}`}>
-                          <button
+                          <div class="d-flex flex-row">
+                            <div class="p-2">
+                              {' '}
+                              <Link to={`/lz-admin/stock/edit/${stock._id}`}>
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-dark btn-sm"
+                                >
+                                  Edit
+                                </button>
+                              </Link>
+                            </div>
+                            <div class="p-2">
+                              {' '}
+                              <button
                                 type="button"
-                                class="btn btn-outline-dark btn-sm">
-                                Edit
+                                class="btn btn-outline-danger btn-sm"
+                                onClick={() => deleteHandler(stock._id)}
+                              >
+                                Delete
                               </button>
-                          </Link>
+                            </div>
                           </div>
-                          <div class="p-2">
-                          {' '}
-                          <button
-                              type="button"
-                              class="btn btn-outline-danger btn-sm"
-                              onClick={() => deleteHandler(stock._id)}
-                            >
-                              Delete
-                            </button>
-                            </div>
-                            </div>
                         </td>
-                        
-                        
                       </tr>
                     )
-                  )}                     
-                    </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                  )}
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-    
-  )
+      </div>
+    </div>
+  );
 }
