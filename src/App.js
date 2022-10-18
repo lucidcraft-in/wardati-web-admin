@@ -12,6 +12,7 @@ import Products from './components/Admin/Products/ProductList';
 import CreateProduct from './components/Admin/Products/CreateProduct';
 import Stock from './components/Admin/Stock/StockList';
 import CreateStock from './components/Admin/Stock/CreateStock';
+import EditStock from './components/Admin/Stock/EditStock';
 import Orders from './components/Admin/Orders/OrderList';
 import Order from './components/Admin/Orders/Order';
 import Promotions from './components/Admin/Promotions/PromotionList';
@@ -56,6 +57,11 @@ function App() {
                   exact
                   path="/admin/stock/create"
                   element={<CreateStock />}
+                ></Route>
+                <Route
+                  exact
+                  path="/admin/stock/edit/:id"
+                  element={<EditStock />}
                 ></Route>
                 <Route exact path="/admin/orders" element={<Orders />}></Route>
                 <Route

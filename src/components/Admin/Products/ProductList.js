@@ -93,8 +93,11 @@ const ProductList = ({ history, match }) => {
                     aria-expanded="false"
                     aria-controls="charts"
                   >
-                    <i class="icon-plus menu-icon"></i>
-                    <span class="menu-title">Add Product</span>
+                    {' '}
+                <button type="button" class="btn btn-primary btn-md btn-block">
+                  <i class="icon-plus menu-icon"></i>
+                  Add Product
+                </button>
                   </Link>
                 </div>
                 <div class="table-responsive">
@@ -116,8 +119,9 @@ const ProductList = ({ history, match }) => {
                             {/* <td>{product.category}</td> */}
                             <td>{product.brand}</td>
                             <td>
-                              <div className="row">
-                                <div className="col">
+                              <div className="d-flex flex-row">
+                                <div className="p-2">
+                                {' '}
                                   <Link
                                     class="nav-link"
                                     to={`/admin/product/edit/${product._id}`}
@@ -130,7 +134,8 @@ const ProductList = ({ history, match }) => {
                                     </button>
                                   </Link>
                                 </div>
-                                <div className="col">
+                                <div className="p-2">
+                                {' '}
                                   <button
                                     type="button"
                                     class="btn btn-outline-danger btn-sm"
@@ -141,7 +146,6 @@ const ProductList = ({ history, match }) => {
                                 </div>
                               </div>
                             </td>
-                            <td></td>
                           </tr>
                           // </LinkContainer>
                         )

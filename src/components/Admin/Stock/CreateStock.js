@@ -12,6 +12,7 @@ export default function CreateStock({history}) {
   const [product, setProduct] = useState('');
   const [size, setSize] = useState('');
   const [price, setPrice] = useState();
+  const [sellingprice, setSellingPrice] = useState();
   const [count, setCount] = useState();
   
   const [sizeList, setSizeList] = useState([]);
@@ -92,6 +93,18 @@ const submitHandler = (e) => {
                       placeholder="Price"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
+                      required={true}
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPrice1">Selling Price</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleInputPrice1"
+                      placeholder="Selling Price"
+                      value={sellingprice}
+                      onChange={(e) => setSellingPrice(e.target.value)}
                       required={true}
                     />
                   </div>

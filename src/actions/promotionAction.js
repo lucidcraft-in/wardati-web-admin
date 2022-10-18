@@ -1,4 +1,4 @@
-import axios from 'axios';
+import Axios from '../axios/axios';
 import {
   PROMOTION_LIST_REQUEST,
   PROMOTION_LIST_SUCCESS,
@@ -26,7 +26,7 @@ export const listPromotions =
     try {
       dispatch({ type: PROMOTION_LIST_REQUEST });
 
-      const { data } = await axios.get(
+      const { data } = await Axios.get(
         `/api/promotion?keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
@@ -51,7 +51,7 @@ export const listPromotionDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PROMOTION_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/promotion/${id}`);
+    const { data } = await Axios.get(`/api/promotion/${id}`);
 
     dispatch({
       type: PROMOTION_DETAILS_SUCCESS,
@@ -86,7 +86,7 @@ export const deletePromotion = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/promotion/${id}`, config);
+    await Axios.delete(`/api/promotion/${id}`, config);
 
     dispatch({
       type: PROMOTION_DELETE_SUCCESS,
@@ -126,7 +126,7 @@ export const createPromotion = (promotion) => async (dispatch, getState) => {
 
     
 
-    const { data } = await axios.post(`/api/promotion`, promotion, config);
+    const { data } = await Axios.post(`/api/promotion`, promotion, config);
 
    
 
@@ -169,7 +169,7 @@ export const updatePromotion = (promotion) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(
+    const { data } = await Axios.put(
       `/api/promotion/${promotion._id}`,
       promotion,
       config
