@@ -175,6 +175,7 @@ console.log(userInfo,'userInfo')
 
 
 export const updateStock = (stock) => async (dispatch, getState) => {
+  console.log(stock,'stock')
   try {
     dispatch({
       type: STOCK_UPDATE_REQUEST,
