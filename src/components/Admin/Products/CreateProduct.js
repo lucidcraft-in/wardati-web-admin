@@ -77,7 +77,7 @@ const CreateProduct = ({ }) => {
         promotionPercentage,
       })
     );
-     navigate('/admin/products');
+     navigate('/lz-admin/products');
    
   };
 

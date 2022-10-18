@@ -37,7 +37,7 @@ const navigate = useNavigate();
  
     if (successUpdate) {
       dispatch({ type: PROMOTION_UPDATE_RESET });
-      navigate('/admin/promotions');
+      navigate('/lz-admin/promotions');
     } else {
          
       if (!promotion?.promotion?.name || promotion?.promotion?._id !== id) {
@@ -62,7 +62,7 @@ const navigate = useNavigate();
          status,
        })
      );
-     navigate('/admin/promotions');
+     navigate('/lz-admin/promotions');
   };
 
   const checkPromoCode = async (val) => {

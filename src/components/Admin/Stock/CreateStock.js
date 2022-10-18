@@ -44,7 +44,7 @@ const submitHandler = (e) => {
     })
   );
 
-  navigate('/admin/stock');
+  navigate('/lz-admin/stock');
 };
 
 

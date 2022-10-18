@@ -28,7 +28,7 @@ export default function EditCategory({history, match}) {
   useEffect(() => {
       if (successUpdate) {
         dispatch({ type: CATEGORY_UPDATE_RESET })
-        navigate('/admin/category')
+        navigate('/lz-admin/category');
       } else {
         if (!category.categoryName || category._id !== id) {
           dispatch(listCategoryDetails(id))
@@ -54,7 +54,7 @@ const submitHandler = (e) => {
       priority,
     })
   );
-  navigate('/admin/category');
+  navigate('/lz-admin/category');
   }
 
   return (

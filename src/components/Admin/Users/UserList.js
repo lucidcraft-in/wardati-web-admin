@@ -81,7 +81,7 @@ const UserList = ({ history }) => {
                           <div class="d-flex flex-row">
                             <div class="p-2">
                               {' '}
-                              <Link to={`/admin/user/edit/${user._id}`}>
+                              <Link to={`/lz-admin/user/edit/${user._id}`}>
                                 <button
                                   type="button"
                                   class="btn btn-outline-dark btn-sm"
@@ -101,7 +101,6 @@ const UserList = ({ history }) => {
                               </button>
                             </div>
                           </div>{' '}
-                          
                         </td>
                       </tr>
                     ))}

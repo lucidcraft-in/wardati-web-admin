@@ -40,7 +40,7 @@ export default function CategoryList({ history, match }) {
     }
 
     if (successCreate) {
-      history.push(`/admin/category/edit/${createCategory._id}`)
+      history.push(`/lz-admin/category/edit/${createCategory._id}`)
     } else {
       dispatch(listCategories(''))
     }
@@ -65,75 +65,78 @@ const createCategoryHandler = () => {
 }
 
   return (
-   
-        <div class="row">
-          <div class="col-lg-12 grid-margin stretch-card">
-           <div class="card">
-              <div class="card-body">
-                   <h4 class="card-title">Category</h4>
-                   <div class="float-right">
-                <Link class="nav-link" data-toggle="collapse" to="/admin/category/create" aria-expanded="false" aria-controls="charts">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Category</h4>
+            <div class="float-right">
+              <Link
+                class="nav-link"
+                data-toggle="collapse"
+                to="/admin/category/create"
+                aria-expanded="false"
+                aria-controls="charts"
+              >
                 {' '}
                 <button type="button" class="btn btn-primary btn-md btn-block">
                   <i class="icon-plus menu-icon"></i>
                   Add Category
                 </button>
-              
-            </Link>
-                   </div>
-                
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                  <thead>
-                        <tr>
-                        <th>CATEGORY NAME</th>
-                      <th>TITLE</th>
-                      <th>PRIORITY</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {categories.map((category) => (
-                      <tr key={category._id}>
+              </Link>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>CATEGORY NAME</th>
+                    <th>TITLE</th>
+                    <th>PRIORITY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categories.map((category) => (
+                    <tr key={category._id}>
                       <td>{category.categoryName}</td>
                       <td> {category.title}</td>
                       <td>{category.priority}</td>
-                     
+
                       <td>
-                      <div class="d-flex flex-row">
-                      <div class="p-2">
+                        <div class="d-flex flex-row">
+                          <div class="p-2">
                             {' '}
-                        <Link
-                          to={`/admin/category/edit/${category._id}`} >
-                          <button
+                            <Link
+                              to={`/lz-admin/category/edit/${category._id}`}
+                            >
+                              <button
                                 type="button"
-                                class="btn btn-outline-dark btn-sm">
+                                class="btn btn-outline-dark btn-sm"
+                              >
                                 Edit
                               </button>
-                        </Link>
-                        </div>
-                        <div class="p-2">
+                            </Link>
+                          </div>
+                          <div class="p-2">
                             {' '}
-                        <button
+                            <button
                               type="button"
                               class="btn btn-outline-danger btn-sm"
                               onClick={() => deleteHandler(category._id)}
                             >
                               Delete
                             </button>
-                            </div>
-                            </div>
+                          </div>
+                        </div>
                       </td>
-                     
-                      </tr>
-                    ))}
-                     
-                    </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-      
-  )
+      </div>
+    </div>
+  );
 }

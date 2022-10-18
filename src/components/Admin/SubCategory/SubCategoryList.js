@@ -56,13 +56,12 @@ export default function SubCategoryList({ history, match }) {
           <div class="card-body">
             <h4 class="card-title">SubCategory</h4>
             <div class="float-right">
-              <Link to="/admin/subcategory/create">
+              <Link to="/lz-admin/subcategory/create">
                 {' '}
                 <button type="button" class="btn btn-primary btn-md btn-block">
                   <i class="icon-plus menu-icon"></i>
                   Add SubCategory
                 </button>
-                
               </Link>
             </div>
 
@@ -85,7 +84,7 @@ export default function SubCategoryList({ history, match }) {
                         <div class="d-flex flex-row">
                           <div class="p-2">
                             {' '}
-                            <Link to={`/admin/subcategory/edit/${sub._id}`}>
+                            <Link to={`/lz-admin/subcategory/edit/${sub._id}`}>
                               <button
                                 type="button"
                                 class="btn btn-outline-dark btn-sm"

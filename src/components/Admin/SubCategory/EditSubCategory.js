@@ -39,7 +39,7 @@ console.log(category,'category')
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: SUB_CATEGORY_UPDATE_RESET });
-      navigate('/admin/subcategory');
+      navigate('/lz-admin/subcategory');
     } else {
       if (!subCategory.name || subCategory._id !== id) {
         
@@ -66,7 +66,7 @@ console.log(category,'category')
        })
      );
 
-     navigate('/admin/subcategory');
+     navigate('/lz-admin/subcategory');
   };
 
   return (

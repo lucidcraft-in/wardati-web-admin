@@ -34,7 +34,7 @@ const  EditStock =({history}) =>{
    useEffect(() => {
     if (successUpdate) {
       
-      navigate('/admin/stock');
+      navigate('/lz-admin/stock');
     } else {
        
       if (!stock.product || stock.stock._id !== id) {
@@ -69,7 +69,7 @@ const  EditStock =({history}) =>{
       })
     );
   
-    navigate('/admin/stock');
+    navigate('/lz-admin/stock');
   };
 
   return (
