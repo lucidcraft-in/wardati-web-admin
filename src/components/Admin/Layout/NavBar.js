@@ -5,10 +5,12 @@ export default function NavBar() {
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="index.html">
-          <img src="images/logo.svg" class="mr-2" alt="logo" />
+          {/* <img src="images/logo.svg" class="mr-2" alt="logo" /> */}
+          Wardati
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="images/logo-mini.svg" alt="logo" />
+          {/* <img src="images/logo-mini.svg" alt="logo" />asas */}
+          <span style={{ fontSize: '16px' }}>wardati</span>
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -111,7 +113,12 @@ export default function NavBar() {
               data-toggle="dropdown"
               id="profileDropdown"
             >
-              <img src="images/faces/face28.jpg" alt="profile" />
+              <img
+                src={process.env.PUBLIC_URL + 'images/user.png'}
+                alt="profile" 
+                height="5px"
+                width="5px"
+              />
             </a>
             <div
               class="dropdown-menu dropdown-menu-right navbar-dropdown"

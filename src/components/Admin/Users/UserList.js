@@ -78,39 +78,30 @@ const UserList = ({ history }) => {
                           )}
                         </td>
                         <td>
-                          {' '}
                           <div class="d-flex flex-row">
                             <div class="p-2">
                               {' '}
-                              <Link
-                                class="nav-link"
-                                to={`/admin/user/edit/${user._id}`}
-                              >
+                              <Link to={`/admin/user/edit/${user._id}`}>
                                 <button
                                   type="button"
-                                  class="btn btn-outline-secondary btn-rounded btn-icon"
+                                  class="btn btn-outline-dark btn-sm"
                                 >
-                                  <i
-                                    class="mdi mdi-grease-pencil text-dark"
-                                    style={{ fontSize: '20px' }}
-                                  ></i>
+                                  Edit
                                 </button>
                               </Link>
                             </div>
-                            <div class="p-3">
+                            <div class="p-2">
                               {' '}
                               <button
                                 type="button"
-                                class="btn btn-outline-secondary btn-rounded btn-icon"
+                                class="btn btn-outline-danger btn-sm"
                                 onClick={() => deleteHandler(user._id)}
                               >
-                                <i
-                                  class="mdi mdi-account-remove text-danger"
-                                  style={{ fontSize: '28px' }}
-                                ></i>
+                                Delete
                               </button>
                             </div>
-                          </div>
+                          </div>{' '}
+                          
                         </td>
                       </tr>
                     ))}

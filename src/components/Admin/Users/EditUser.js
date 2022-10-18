@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { USER_UPDATE_RESET } from '../../../constants/userConstants';
 import { getUserDetails, updateUser } from '../../../actions/userActions';
@@ -8,7 +8,7 @@ import { getUserDetails, updateUser } from '../../../actions/userActions';
 const EditUser = ({ match, history }) => {
 const {  id } = useParams();
   // const userId = match.params.id;
-  
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
@@ -43,6 +43,7 @@ const {  id } = useParams();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateUser({ _id: id, name, email, isAdmin }));
+      navigate('/admin/users');
   };
 
 

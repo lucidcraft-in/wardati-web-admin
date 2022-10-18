@@ -4,12 +4,12 @@
     100% { opacity: 0 }
   }
   .ldio-e73ojg3a1m div {
-    left: 94px;
+    left: 190px;
     top: 48px;
     position: absolute;
     animation: ldio-e73ojg3a1m linear 1s infinite;
     background: #3b283f;
-    width: 12px;
+    width: 6px;
     height: 24px;
     border-radius: 6px / 12px;
     transform-origin: 6px 52px;
@@ -63,7 +63,7 @@
     background: #3b283f;
   }
   .loadingio-spinner-spinner-7wthsg4wcj9 {
-    width: 200px;
+    width: 300px;
     height: 200px;
     display: inline-block;
     overflow: hidden;

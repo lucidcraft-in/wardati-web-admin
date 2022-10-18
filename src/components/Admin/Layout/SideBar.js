@@ -1,21 +1,27 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { logout } from '../../../actions/userActions'
-import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../../actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
 export default function SideBar() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const logoutHandler = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
   return (
-      <>
-       <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
+    <>
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger">
+          <i class="ti-settings"></i>
+        </div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+          </div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+          </div>
           <p class="settings-heading mt-2">HEADER SKINS</p>
           <div class="color-tiles mx-0 px-4">
             <div class="tiles success"></div>
@@ -31,19 +37,53 @@ export default function SideBar() {
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+            <a
+              class="nav-link active"
+              id="todo-tab"
+              data-toggle="tab"
+              href="#todo-section"
+              role="tab"
+              aria-controls="todo-section"
+              aria-expanded="true"
+            >
+              TO DO LIST
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+            <a
+              class="nav-link"
+              id="chats-tab"
+              data-toggle="tab"
+              href="#chats-section"
+              role="tab"
+              aria-controls="chats-section"
+            >
+              CHATS
+            </a>
           </li>
         </ul>
         <div class="tab-content" id="setting-content">
-          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+          <div
+            class="tab-pane fade show active scroll-wrapper"
+            id="todo-section"
+            role="tabpanel"
+            aria-labelledby="todo-section"
+          >
             <div class="add-items d-flex px-3 mb-0">
               <form class="form w-100">
                 <div class="form-group d-flex">
-                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do"/>
-                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                  <input
+                    type="text"
+                    class="form-control todo-list-input"
+                    placeholder="Add To-do"
+                  />
+                  <button
+                    type="submit"
+                    class="add btn btn-primary todo-list-add-btn"
+                    id="add-task"
+                  >
+                    Add
+                  </button>
                 </div>
               </form>
             </div>
@@ -52,7 +92,7 @@ export default function SideBar() {
                 <li>
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="checkbox" type="checkbox"/>
+                      <input class="checkbox" type="checkbox" />
                       Team review meeting at 3.00 PM
                     </label>
                   </div>
@@ -61,7 +101,7 @@ export default function SideBar() {
                 <li>
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="checkbox" type="checkbox"/>
+                      <input class="checkbox" type="checkbox" />
                       Prepare for presentation
                     </label>
                   </div>
@@ -70,7 +110,7 @@ export default function SideBar() {
                 <li>
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="checkbox" type="checkbox"/>
+                      <input class="checkbox" type="checkbox" />
                       Resolve all the low priority tickets due today
                     </label>
                   </div>
@@ -79,7 +119,7 @@ export default function SideBar() {
                 <li class="completed">
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked/>
+                      <input class="checkbox" type="checkbox" checked />
                       Schedule meeting for next week
                     </label>
                   </div>
@@ -88,7 +128,7 @@ export default function SideBar() {
                 <li class="completed">
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked/>
+                      <input class="checkbox" type="checkbox" checked />
                       Project review
                     </label>
                   </div>
@@ -102,7 +142,9 @@ export default function SideBar() {
                 <i class="ti-control-record text-primary mr-2"></i>
                 <span>Feb 11 2018</span>
               </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+              <p class="mb-0 font-weight-thin text-gray">
+                Creating component page build a js
+              </p>
               <p class="text-gray mb-0">The total number of sessions</p>
             </div>
             <div class="events pt-4 px-3">
@@ -114,15 +156,27 @@ export default function SideBar() {
               <p class="text-gray mb-0 ">Call Sarah Graves</p>
             </div>
           </div>
-      
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+
+          <div
+            class="tab-pane fade"
+            id="chats-section"
+            role="tabpanel"
+            aria-labelledby="chats-section"
+          >
             <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
+              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">
+                Friends
+              </p>
+              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">
+                See All
+              </small>
             </div>
             <ul class="chat-list">
               <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"/><span class="online"></span></div>
+                <div class="profile">
+                  <img src="images/faces/face1.jpg" alt="image" />
+                  <span class="online"></span>
+                </div>
                 <div class="info">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -130,7 +184,10 @@ export default function SideBar() {
                 <small class="text-muted my-auto">19 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"/><span class="offline"></span></div>
+                <div class="profile">
+                  <img src="images/faces/face2.jpg" alt="image" />
+                  <span class="offline"></span>
+                </div>
                 <div class="info">
                   <div class="wrapper d-flex">
                     <p>Catherine</p>
@@ -141,7 +198,10 @@ export default function SideBar() {
                 <small class="text-muted my-auto">23 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"/><span class="online"></span></div>
+                <div class="profile">
+                  <img src="images/faces/face3.jpg" alt="image" />
+                  <span class="online"></span>
+                </div>
                 <div class="info">
                   <p>Daniel Russell</p>
                   <p>Available</p>
@@ -149,7 +209,10 @@ export default function SideBar() {
                 <small class="text-muted my-auto">14 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"/><span class="offline"></span></div>
+                <div class="profile">
+                  <img src="images/faces/face4.jpg" alt="image" />
+                  <span class="offline"></span>
+                </div>
                 <div class="info">
                   <p>James Richardson</p>
                   <p>Away</p>
@@ -157,7 +220,10 @@ export default function SideBar() {
                 <small class="text-muted my-auto">2 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"/><span class="online"></span></div>
+                <div class="profile">
+                  <img src="images/faces/face5.jpg" alt="image" />
+                  <span class="online"></span>
+                </div>
                 <div class="info">
                   <p>Madeline Kennedy</p>
                   <p>Available</p>
@@ -165,7 +231,10 @@ export default function SideBar() {
                 <small class="text-muted my-auto">5 min</small>
               </li>
               <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"/><span class="online"></span></div>
+                <div class="profile">
+                  <img src="images/faces/face6.jpg" alt="image" />
+                  <span class="online"></span>
+                </div>
                 <div class="info">
                   <p>Sarah Graves</p>
                   <p>Available</p>
@@ -174,11 +243,10 @@ export default function SideBar() {
               </li>
             </ul>
           </div>
-          
         </div>
-          </div>
-      
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      </div>
+
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
             <Link class="nav-link" to="/">
@@ -187,70 +255,97 @@ export default function SideBar() {
             </Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/users" aria-expanded="false" aria-controls="ui-basic">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/users"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Users</span>
-            
             </Link>
-           
-            
-            
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/products" aria-expanded="false" aria-controls="form-elements">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/products"
+              aria-expanded="false"
+              aria-controls="form-elements"
+            >
               <i class="icon-columns menu-icon"></i>
               <span class="menu-title">Products</span>
-              
             </Link>
-           
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/stock" aria-expanded="false" aria-controls="charts">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/stock"
+              aria-expanded="false"
+              aria-controls="charts"
+            >
               <i class="icon-bar-graph menu-icon"></i>
               <span class="menu-title">Stock</span>
-              
             </Link>
-            
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/orders" aria-expanded="false" aria-controls="tables">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/orders"
+              aria-expanded="false"
+              aria-controls="tables"
+            >
               <i class="icon-grid-2 menu-icon"></i>
               <span class="menu-title">Orders</span>
-              
             </Link>
-             
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/promotions" aria-expanded="false" aria-controls="icons">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/promotions"
+              aria-expanded="false"
+              aria-controls="icons"
+            >
               <i class="icon-contract menu-icon"></i>
               <span class="menu-title">Promotions</span>
-               
             </Link>
-           
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/category" aria-expanded="false" aria-controls="auth">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/category"
+              aria-expanded="false"
+              aria-controls="auth"
+            >
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">Category</span>
-              
             </Link>
-           
           </li>
           <li class="nav-item">
-            <Link class="nav-link" data-toggle="collapse" to="/admin/subcategory" aria-expanded="false" aria-controls="error">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
+              to="/lz-admin/subcategory"
+              aria-expanded="false"
+              aria-controls="error"
+            >
               <i class="icon-ban menu-icon"></i>
               <span class="menu-title">Sub Category</span>
-             
             </Link>
-            
           </li>
-          <li class="nav-item" >
-            <a class="nav-link" onClick={logoutHandler}>
+          <li class="nav-item">
+            <Link class="nav-link" onClick={logoutHandler} to="">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Logout</span>
-            </a>
+            </Link>
           </li>
         </ul>
-      </nav></>
-  )
+      </nav>
+    </>
+  );
 }
