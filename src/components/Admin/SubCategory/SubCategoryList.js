@@ -50,74 +50,73 @@ export default function SubCategoryList({ history, match }) {
       }
   };
   return (
-    
-        <div class="row">
-          <div class="col-lg-12 grid-margin stretch-card">
-           <div class="card">
-              <div class="card-body">
-                   <h4 class="card-title">SubCategory</h4>
-                   <div class="float-right">
-                <Link class="nav-link" data-toggle="collapse" to="/admin/subcategory/create" aria-expanded="false" aria-controls="charts">
-              <i class="icon-plus menu-icon"></i>
-              <span class="menu-title">Add SubCategory</span>
-              
-            </Link>
-                   </div>
-                
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                  <thead>
-                        <tr>
-                        <th>NAME</th>
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">SubCategory</h4>
+            <div class="float-right">
+              <Link
+                class="nav-link"
+                data-toggle="collapse"
+                to="/admin/subcategory/create"
+                aria-expanded="false"
+                aria-controls="charts"
+              >
+                <i class="icon-plus menu-icon"></i>
+                <span class="menu-title">Add SubCategory</span>
+              </Link>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>NAME</th>
                     <th>TITTLE</th>
                     <th>CATEGORY</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {subCategories.map((sub) => (
+                  </tr>
+                </thead>
+                <tbody>
+                  {subCategories.map((sub) => (
                     <tr key={sub._id}>
                       <td>{sub.name}</td>
                       <td> {sub.tittle}</td>
                       <td> {sub.category_[0].categoryName}</td>
                       <td>
-                        <div className='row'>
-                          <div className='col'>
-                          <Link
-                          to={`/admin/subcategory/edit/${sub._id}`}
-                          
-                        >
-                                    <button
-                                      type="button"
-                                      class="btn btn-outline-dark btn-sm"
-                                    >
-                                      Edit
-                                    </button>
-                        </Link>
+                        <div class="d-flex flex-row">
+                          <div class="p-2">
+                            {' '}
+                            <Link to={`/admin/subcategory/edit/${sub._id}`}>
+                              <button
+                                type="button"
+                                class="btn btn-outline-dark btn-sm"
+                              >
+                                Edit
+                              </button>
+                            </Link>
                           </div>
-                          <div className='col'>
-                          <button
-                                    type="button"
-                                    class="btn btn-outline-danger btn-sm"
-                                    onClick={() => deleteHandler(sub._id)}
-                                  >
-                                    Delete
-                                  </button>
+                          <div class="p-2">
+                            {' '}
+                            <button
+                              type="button"
+                              class="btn btn-outline-danger btn-sm"
+                              onClick={() => deleteHandler(sub._id)}
+                            >
+                              Delete
+                            </button>
                           </div>
                         </div>
-                        
-                                  
+                         
                       </td>
-                      
                     </tr>
                   ))}
-                     
-                    </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-      
-  )
+      </div>
+    </div>
+  );
 }
