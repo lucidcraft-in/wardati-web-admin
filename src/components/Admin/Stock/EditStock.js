@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link ,useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../../../components/FormContainer';
 import {
@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function EditStock({ match, history }) {
 
-    const stockId = match.params.id;
+    // const stockId = match.params.id;
+    const {  id } = useParams();
     const navigate = useNavigate();
   const [color, setColor] = useState('');
    const [count, setCount] = useState('');
@@ -34,16 +35,16 @@ export default function EditStock({ match, history }) {
       // history.push('/admin/stocks');
     } else {
        
-      if (!stock.product || stock.stock._id !== stockId) {
+      if (!stock.product || stock.stock._id !== id) {
        
-        dispatch(listStockDetails(stockId));
+        dispatch(listStockDetails(id));
       } else {
         
         setColor(stock.stock.color);
         setCount(stock.stock.count);
       }
     }
-  }, [dispatch, history, stockId, stock, successUpdate]);
+  }, [dispatch, history, id, stock, successUpdate]);
 
   
   
@@ -51,7 +52,7 @@ export default function EditStock({ match, history }) {
      e.preventDefault();
      dispatch(
        updateStock({
-         _id: stockId,
+         _id: id,
          color,
          count,
           

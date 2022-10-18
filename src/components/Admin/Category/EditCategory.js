@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate,useParams} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCategory,listCategoryDetails } from '../../../actions/categoryActions'
 import { CATEGORY_UPDATE_RESET } from '../../../constants/categoryConstants'
@@ -7,10 +7,12 @@ import { CATEGORY_UPDATE_RESET } from '../../../constants/categoryConstants'
 
 export default function EditCategory({history, match}) {
 
-  const categoryId = match.params.id;
+  // const categoryId = match.params.id;
   const [categoryName, setCategoryName] = useState('')
   const [title, setTitle] = useState('')
   const [priority, setPriority] = useState(0)
+  const {  id } = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
   const categoryDetails = useSelector((state) => state.categoryDetails)
@@ -26,10 +28,10 @@ export default function EditCategory({history, match}) {
   useEffect(() => {
       if (successUpdate) {
         dispatch({ type: CATEGORY_UPDATE_RESET })
-        history.push('/admin/categorylist')
+        navigate('/admin/category')
       } else {
-        if (!category.categoryName || category._id !== categoryId) {
-          dispatch(listCategoryDetails(categoryId))
+        if (!category.categoryName || category._id !== id) {
+          dispatch(listCategoryDetails(id))
         } else {
           console.log(category)
           setCategoryName(category.categoryName)
@@ -39,24 +41,24 @@ export default function EditCategory({history, match}) {
          
         }
       }
-  }, [dispatch, history, categoryId, category, successUpdate])
+  }, [dispatch, history, id, category, successUpdate])
   
   
 const submitHandler = (e) => {
   e.preventDefault()
   dispatch(
     updateCategory({
-      _id: categoryId,
+      _id: id,
       categoryName,
       title,
       priority,
     })
   );
+  navigate('/admin/category');
   }
 
   return (
-    <div class="main-panel">        
-    <div class="content-wrapper">
+   
         <div class="row">
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -90,7 +92,6 @@ const submitHandler = (e) => {
               </div>
             </div>
         </div>
-      </div>
-      </div>
+     
   )
 }

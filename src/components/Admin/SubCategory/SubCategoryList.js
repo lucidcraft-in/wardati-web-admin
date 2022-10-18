@@ -50,8 +50,7 @@ export default function SubCategoryList({ history, match }) {
       }
   };
   return (
-    <div className='main-panel'>
-      <div class="content-wrapper">
+    
         <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
            <div class="card">
@@ -81,23 +80,32 @@ export default function SubCategoryList({ history, match }) {
                       <td> {sub.tittle}</td>
                       <td> {sub.category_[0].categoryName}</td>
                       <td>
-                        <Link
+                        <div className='row'>
+                          <div className='col'>
+                          <Link
                           to={`/admin/subcategory/edit/${sub._id}`}
                           
                         >
-                          <Button variant="light" className="btn-sm">
-                            <i className="fas fa-edit"></i>
-                            EDIT
-                          </Button>
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-dark btn-sm"
+                                    >
+                                      Edit
+                                    </button>
                         </Link>
-                        <Button
-                          variant="danger"
-                          className="btn-sm"
-                          onClick={() => deleteHandler(sub._id)}
-                        >
-                          DELETE
-                          <i className="fas fa-trash"></i>
-                        </Button>
+                          </div>
+                          <div className='col'>
+                          <button
+                                    type="button"
+                                    class="btn btn-outline-danger btn-sm"
+                                    onClick={() => deleteHandler(sub._id)}
+                                  >
+                                    Delete
+                                  </button>
+                          </div>
+                        </div>
+                        
+                                  
                       </td>
                       
                     </tr>
@@ -110,7 +118,6 @@ export default function SubCategoryList({ history, match }) {
               </div>
             </div>
         </div>
-      </div>
-    </div>
+      
   )
 }

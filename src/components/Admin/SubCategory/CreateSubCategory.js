@@ -37,8 +37,7 @@ export default function CreateSubCategory() {
     navigate('/admin/subcategory');
   };
   return (
-    <div class="main-panel">        
-    <div class="content-wrapper">
+   
         <div class="row">
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -77,7 +76,6 @@ export default function CreateSubCategory() {
               </div>
             </div>
         </div>
-      </div>
-      </div>
+      
   )
 }

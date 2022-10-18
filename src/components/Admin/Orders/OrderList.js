@@ -24,8 +24,7 @@ const OrderList = ({  }) => {
     }, [dispatch, userInfo])
 
   return (
-    <div className='main-panel'>
-      <div class="content-wrapper">
+   
         <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
            <div class="card">
@@ -111,9 +110,7 @@ const OrderList = ({  }) => {
               </div>
             </div>
         </div>
-      </div>
-
-    </div>
+     
   )
 }
 export default OrderList

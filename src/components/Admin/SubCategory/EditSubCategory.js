@@ -13,14 +13,14 @@ import { listCategories } from '../../../actions/categoryActions';
 
 export default function EditSubCategory({ history, match }) {
 
-  const subCategoryId = useParams();
+  const {  id } = useParams();
   
   // console.log(subCategoryId,'subCategoryId')
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [tittle, setTittle] = useState('');
   const [category, setCategory] = useState('weert');
-
+console.log(category,'category')
   const dispatch = useDispatch();
   
     const subCategoryDetails = useSelector((state) => state.subCategoryDetails);
@@ -41,9 +41,9 @@ export default function EditSubCategory({ history, match }) {
       dispatch({ type: SUB_CATEGORY_UPDATE_RESET });
       navigate('/admin/subcategory');
     } else {
-      if (!subCategory.name || subCategory._id !== subCategoryId) {
+      if (!subCategory.name || subCategory._id !== id) {
         
-        dispatch(listSubCategoryDetails(subCategoryId));
+        dispatch(listSubCategoryDetails(id));
          dispatch(listSubCategories(''));
       } else {
         
@@ -59,7 +59,7 @@ export default function EditSubCategory({ history, match }) {
     e.preventDefault();
      dispatch(
        updateSubCategory({
-         _id: subCategoryId,
+         _id: id,
          name,
          tittle,
          category,
@@ -70,13 +70,12 @@ export default function EditSubCategory({ history, match }) {
   };
 
   return (
-    <div class="main-panel">        
-    <div class="content-wrapper">
+
         <div class="row">
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Create SubCategory</h4>
+                <h4 class="card-title">Edit SubCategory</h4>
                 <form class="forms-sample" onSubmit={submitHandler}>
                     
                     
@@ -94,7 +93,7 @@ export default function EditSubCategory({ history, match }) {
                     </div>
                     <div class="form-group">
                       <label for="exampleSelectCategory1">Parent Category</label>
-                        <select class="form-control" id="exampleSelectCategory1"  as="select"
+                        <select class="form-control" id="exampleSelectCategory1"  as="select" value={category}
                   onChange={(e) => setCategory(e.target.value)}>
                           <option>select category </option>
                           {categories.map((obj) => (
@@ -110,7 +109,6 @@ export default function EditSubCategory({ history, match }) {
               </div>
             </div>
         </div>
-      </div>
-      </div>
+   
   )
 }
