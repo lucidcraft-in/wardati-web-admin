@@ -56,15 +56,13 @@ export default function SubCategoryList({ history, match }) {
           <div class="card-body">
             <h4 class="card-title">SubCategory</h4>
             <div class="float-right">
-              <Link
-                class="nav-link"
-                data-toggle="collapse"
-                to="/admin/subcategory/create"
-                aria-expanded="false"
-                aria-controls="charts"
-              >
-                <i class="icon-plus menu-icon"></i>
-                <span class="menu-title">Add SubCategory</span>
+              <Link to="/admin/subcategory/create">
+                {' '}
+                <button type="button" class="btn btn-primary btn-md btn-block">
+                  <i class="icon-plus menu-icon"></i>
+                  Add SubCategory
+                </button>
+                
               </Link>
             </div>
 
@@ -107,7 +105,6 @@ export default function SubCategoryList({ history, match }) {
                             </button>
                           </div>
                         </div>
-                         
                       </td>
                     </tr>
                   ))}
