@@ -1,21 +1,18 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {  useSelector } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 
 import './App.css';
 
 import NavBar from './components/Admin/Layout/NavBar';
 import SideBar from './components/Admin/Layout/SideBar';
 import DashBoard from './components/Admin/DashBoard/DashBoard';
- 
 
 import Users from './components/Admin/Users/UserList';
 import EditUser from './components/Admin/Users/EditUser';
 import Products from './components/Admin/Products/ProductList';
 import CreateProduct from './components/Admin/Products/CreateProduct';
-import EditProduct from './components/Admin/Products/EditProduct'
 import Stock from './components/Admin/Stock/StockList';
 import CreateStock from './components/Admin/Stock/CreateStock';
 import EditStock from './components/Admin/Stock/EditStock';
@@ -32,102 +29,11 @@ import EditSubCategory from './components/Admin/SubCategory/EditSubCategory';
 import LoginScreen from './components/LoginScreen';
 
 function App() {
-
-   const userLogin = useSelector((state) => state.userLogin);
-   const { userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   return (
     <Router>
-
-      <div className="container-scroller">
-        <NavBar />
-        <div className="container-fluid page-body-wrapper">
-          <SideBar />
-          <div className="main-panel">
-            <div className="content-wrapper">
-              <Routes>
-                <Route exact path="/" element={<DashBoard />}></Route>
-                <Route
-                  exact
-                  path="/admin/user/edit/:id"
-                  element={<EditUser />}
-                ></Route>
-                <Route exact path="/admin/users" element={<Users />}></Route>
-                <Route
-                  exact
-                  path="/admin/products"
-                  element={<Products />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/products/create"
-                  element={<CreateProduct />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/products/edit/:id"
-                  element={<EditProduct />}
-                ></Route>
-                <Route exact path="/admin/stock" element={<Stock />}></Route>
-                <Route
-                  exact
-                  path="/admin/stock/create"
-                  element={<CreateStock />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/stock/edit/:id"
-                  element={<EditStock />}
-                ></Route>
-                <Route exact path="/admin/orders" element={<Orders />}></Route>
-                <Route
-                  exact
-                  path="/admin/viewOrder/:id"
-                  element={<Order />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/promotions"
-                  element={<Promotions />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/promotions/create"
-                  element={<CreatePromotion />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/category"
-                  element={<Category />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/category/create"
-                  element={<CreateCategory />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/category/edit/:id"
-                  element={<EditCategory />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/subcategory"
-                  element={<SubCategory />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/subcategory/create"
-                  element={<CreateSubCategory />}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/subcategory/edit/:id"
-                  element={<EditSubCategory />}
-                ></Route>
-                <Route exact path="/login" element={<LoginScreen />} />
-              </Routes>
-=======
       {userInfo && userInfo.isAdmin ? (
         <div className="container-scroller">
           <NavBar />
@@ -135,112 +41,108 @@ function App() {
             <SideBar />
             <div className="main-panel">
               <div className="content-wrapper">
-               
-                  <Routes>
-                    <Route exact path="/" element={<DashBoard />}></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/user/edit/:id"
-                      element={<EditUser />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/users"
-                      element={<Users />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/products"
-                      element={<Products />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/products/create"
-                      element={<CreateProduct />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/stock"
-                      element={<Stock />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/stock/create"
-                      element={<CreateStock />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/stock/edit/:id"
-                      element={<EditStock />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/orders"
-                      element={<Orders />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/viewOrder/:id"
-                      element={<Order />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/promotions"
-                      element={<Promotions />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/promotions/create"
-                      element={<CreatePromotion />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/category"
-                      element={<Category />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/category/create"
-                      element={<CreateCategory />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/category/edit/:id"
-                      element={<EditCategory />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/subcategory"
-                      element={<SubCategory />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/subcategory/create"
-                      element={<CreateSubCategory />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/subcategory/edit/:id"
-                      element={<EditSubCategory />}
-                    ></Route>
-                    <Route
-                      exact
-                      path="/lz-admin/login"
-                      element={<LoginScreen />}
-                    />
-                  </Routes>
-               
+                <Routes>
+                  <Route exact path="/" element={<DashBoard />}></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/user/edit/:id"
+                    element={<EditUser />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/users"
+                    element={<Users />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/products"
+                    element={<Products />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/products/create"
+                    element={<CreateProduct />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/stock"
+                    element={<Stock />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/stock/create"
+                    element={<CreateStock />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/stock/edit/:id"
+                    element={<EditStock />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/orders"
+                    element={<Orders />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/viewOrder/:id"
+                    element={<Order />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/promotions"
+                    element={<Promotions />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/promotions/create"
+                    element={<CreatePromotion />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/category"
+                    element={<Category />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/category/create"
+                    element={<CreateCategory />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/category/edit/:id"
+                    element={<EditCategory />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/subcategory"
+                    element={<SubCategory />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/subcategory/create"
+                    element={<CreateSubCategory />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/subcategory/edit/:id"
+                    element={<EditSubCategory />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/login"
+                    element={<LoginScreen />}
+                  />
+                </Routes>
               </div>
-
             </div>
           </div>
         </div>
-      ) :  <Routes><Route
-                      exact
-                      path="/lz-admin/login"
-                      element={<LoginScreen />}
-                    />
-                  </Routes>}
+      ) : (
+        <Routes>
+          <Route exact path="/lz-admin/login" element={<LoginScreen />} />
+        </Routes>
+      )}
     </Router>
   );
 }
