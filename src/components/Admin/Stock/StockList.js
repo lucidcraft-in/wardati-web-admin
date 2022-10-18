@@ -86,8 +86,11 @@ export default function StockList({ history, match }) {
                    <h4 class="card-title">Stock</h4>
                    <div class="float-right">
                 <Link class="nav-link" data-toggle="collapse" to="/admin/stock/create" aria-expanded="false" aria-controls="charts">
-              <i class="icon-plus menu-icon"></i>
-              <span class="menu-title">Add Stock</span>
+                {' '}
+                <button type="button" class="btn btn-primary btn-md btn-block">
+                  <i class="icon-plus menu-icon"></i>
+                  Add Stock
+                </button>
               
             </Link>
                    </div>
@@ -122,23 +125,30 @@ export default function StockList({ history, match }) {
                         </td>
                         <td>{stock.count}</td>
                         <td>
-                        <td>
+                        <div class="d-flex flex-row">
+                        <div class="p-2">
+                            {' '}
                           <Link to={`/admin/stock/edit/${stock._id}`}>
-                            <Button variant="light" className="btn-sm">
-                              <i className="fas fa-edit"></i>
-                              Edit
-                            </Button>
+                          <button
+                                type="button"
+                                class="btn btn-outline-dark btn-sm">
+                                Edit
+                              </button>
                           </Link>
-                          <Button
-                            variant="danger"
-                            className="btn-sm"
-                            onClick={() => deleteHandler(stock._id)}
-                          >
-                            Delete
-                            <i className="fas fa-trash"></i>
-                          </Button>
+                          </div>
+                          <div class="p-2">
+                          {' '}
+                          <button
+                              type="button"
+                              class="btn btn-outline-danger btn-sm"
+                              onClick={() => deleteHandler(stock._id)}
+                            >
+                              Delete
+                            </button>
+                            </div>
+                            </div>
                         </td>
-                        </td>
+                        
                         
                       </tr>
                     )

@@ -13,7 +13,7 @@ import { PROMOTION_CREATE_RESET } from '../../../constants/promotionConstant';
 
 export default function PromotionList({ history, match }) {
 
-   const pageNumber = match.params.pageNumber || 1;
+   const pageNumber =  1;
 
   const dispatch = useDispatch();
   
@@ -51,7 +51,7 @@ export default function PromotionList({ history, match }) {
     if (successCreate) {
       history.push(`/admin/promotion/${createdPromotion._id}/edit`);
     } else {
-      dispatch(listPromotions(''));
+      dispatch(listPromotions('',pageNumber));
     }
   }, [
     dispatch,
@@ -60,7 +60,7 @@ export default function PromotionList({ history, match }) {
     successDelete,
     successCreate,
     createdPromotion,
-    
+    pageNumber
   ]);
 
   const deleteHandler = (id) => {
@@ -77,8 +77,7 @@ export default function PromotionList({ history, match }) {
 
 
   return (
-    <div className='main-panel'>
-      <div class="content-wrapper">
+    
         <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
            <div class="card">
@@ -86,8 +85,11 @@ export default function PromotionList({ history, match }) {
                    <h4 class="card-title">Promotions</h4>
                    <div class="float-right">
                 <Link class="nav-link" data-toggle="collapse" to="/admin/promotions/create" aria-expanded="false" aria-controls="charts">
-              <i class="icon-plus menu-icon"></i>
-              <span class="menu-title">Add Promotions</span>
+              {' '}
+                <button type="button" class="btn btn-primary btn-md btn-block">
+                  <i class="icon-plus menu-icon"></i>
+                  Add Promotions
+                </button>
               
             </Link>
                    </div>
@@ -108,6 +110,31 @@ export default function PromotionList({ history, match }) {
                         <td>{promotion.name}</td>
                         <td> {promotion.phone}</td>
                         <td>{promotion.code}</td>
+                        <td>
+                      <div class="d-flex flex-row">
+                      <div class="p-2">
+                            {' '}
+                        <Link
+                          to={`/admin/promotion/edit/${promotion._id}`} >
+                          <button
+                                type="button"
+                                class="btn btn-outline-dark btn-sm">
+                                Edit
+                              </button>
+                        </Link>
+                        </div>
+                        <div class="p-2">
+                            {' '}
+                        <button
+                              type="button"
+                              class="btn btn-outline-danger btn-sm"
+                              onClick={() => deleteHandler(promotion._id)}
+                            >
+                              Delete
+                            </button>
+                            </div>
+                            </div>
+                      </td>
 
                         {/* <td>
                           <LinkContainer
@@ -136,7 +163,6 @@ export default function PromotionList({ history, match }) {
               </div>
             </div>
         </div>
-      </div>
-    </div>
+    
   )
 }

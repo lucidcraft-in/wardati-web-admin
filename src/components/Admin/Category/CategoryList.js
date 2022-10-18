@@ -73,8 +73,11 @@ const createCategoryHandler = () => {
                    <h4 class="card-title">Category</h4>
                    <div class="float-right">
                 <Link class="nav-link" data-toggle="collapse" to="/admin/category/create" aria-expanded="false" aria-controls="charts">
-              <i class="icon-plus menu-icon"></i>
-              <span class="menu-title">Add Category</span>
+                {' '}
+                <button type="button" class="btn btn-primary btn-md btn-block">
+                  <i class="icon-plus menu-icon"></i>
+                  Add Category
+                </button>
               
             </Link>
                    </div>
@@ -94,27 +97,33 @@ const createCategoryHandler = () => {
                       <td>{category.categoryName}</td>
                       <td> {category.title}</td>
                       <td>{category.priority}</td>
+                     
                       <td>
-                      <td>
+                      <div class="d-flex flex-row">
+                      <div class="p-2">
+                            {' '}
                         <Link
-                          to={`/admin/category/edit/${category._id}`}
-                          
-                        >
-                          <Button variant="light" className="btn-sm">
-                            <i className="fas fa-edit"></i>
-                            EDIT
-                          </Button>
+                          to={`/admin/category/edit/${category._id}`} >
+                          <button
+                                type="button"
+                                class="btn btn-outline-dark btn-sm">
+                                Edit
+                              </button>
                         </Link>
-                        <Button
-                          variant="danger"
-                          className="btn-sm"
-                          onClick={() => deleteHandler(category._id)}
-                        >
-                          DELETE
-                          <i className="fas fa-trash"></i>
-                        </Button>
+                        </div>
+                        <div class="p-2">
+                            {' '}
+                        <button
+                              type="button"
+                              class="btn btn-outline-danger btn-sm"
+                              onClick={() => deleteHandler(category._id)}
+                            >
+                              Delete
+                            </button>
+                            </div>
+                            </div>
                       </td>
-                      </td>
+                     
                       </tr>
                     ))}
                      

@@ -1,65 +1,96 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { createPromotion } from '../../../actions/promotionAction';
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useNavigate ,useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { PROMOTION_UPDATE_RESET } from '../../../constants/promotionConstant';
+import {
+  listPromotionDetails,
+  updatePromotion,
+} from '../../../actions/promotionAction';
 
-export default function CreatePromotion() {
+export default function EditPromotion({ match, history }) {
 
+// const promotionId = match.params.id;
+
+const {  id } = useParams();
+const navigate = useNavigate();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [promoCode, setPromoCode] = useState('');
   const [promoCodeAvailable, setPromoCodeAvailable] = useState('');
-  const [status, setStatus] = useState(true);
-  const navigate = useNavigate();
+   const [status, setStatus] = useState();
+
   const dispatch = useDispatch();
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(
-      createPromotion({
-        name,
-        phone,
-        promoCode,
-        status,
-      })
-    );
+  const promotionDetails = useSelector((state) => state.promotionDetails);
+  const { loading, error, promotion } = promotionDetails;
 
-    navigate('/admin/promotions');
+  const promotionUpdate = useSelector((state) => state.promotionUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = promotionUpdate;
+
+ 
+
+  useEffect(() => {
+ 
+    if (successUpdate) {
+      dispatch({ type: PROMOTION_UPDATE_RESET });
+      navigate('/admin/promotions');
+    } else {
+         
+      if (!promotion?.promotion?.name || promotion?.promotion?._id !== id) {
+        dispatch(listPromotionDetails(id));
+      } else {
+        setName(promotion?.promotion?.name);
+        setPhone(promotion?.promotion?.phone);
+        setPromoCode(promotion?.promotion?.code);
+        setStatus(promotion?.promotion?.isActive);
+      }
+    }
+  }, [dispatch, history, id, promotion, successUpdate]);
+
+  const submitHandler = (e) => {
+     e.preventDefault();
+     dispatch(
+       updatePromotion({
+         _id: id,
+         name,
+         phone,
+         promoCode,
+         status,
+       })
+     );
+     navigate('/admin/promotions');
   };
 
   const checkPromoCode = async (val) => {
-
     const userInfo = localStorage.getItem('userInfo')
       ? JSON.parse(localStorage.getItem('userInfo'))
-          : [];
-        
-      
-        
-           const config = {
-             headers: {
-               Authorization: `Bearer ${userInfo.token}`,
-             },
-           };
-     
-        setPromoCode(val);
-           
-    
-        const { data } = await axios.get(`/api/promotions/${val}`,'', config);
-    
-    
-         
-        setPromoCodeAvailable(data.availability);
-         
-      };
-    
-      const setStatusOnClick = () => {
+      : [];
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    setPromoCode(val);
+
+    const { data } = await axios.post(`/api/promotion/${val}`, '', config);
+
+    setPromoCodeAvailable(data.availability);
+  };
+
+
+    const setStatusOnClick = () => {
       setStatus((status) => !status);
-    }
+    };
+
 
   return (
-    
+    <div>
         <div class="row">
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
@@ -111,6 +142,6 @@ export default function CreatePromotion() {
               </div>
             </div>
         </div>
-      
+    </div>
   )
 }
