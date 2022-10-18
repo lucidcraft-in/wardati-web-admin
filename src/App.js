@@ -10,6 +10,7 @@ import Users from './components/Admin/Users/UserList';
 import EditUser from './components/Admin/Users/EditUser';
 import Products from './components/Admin/Products/ProductList';
 import CreateProduct from './components/Admin/Products/CreateProduct';
+import EditProduct from './components/Admin/Products/EditProduct'
 import Stock from './components/Admin/Stock/StockList';
 import CreateStock from './components/Admin/Stock/CreateStock';
 import EditStock from './components/Admin/Stock/EditStock';
@@ -51,6 +52,11 @@ function App() {
                   exact
                   path="/admin/products/create"
                   element={<CreateProduct />}
+                ></Route>
+                <Route
+                  exact
+                  path="/admin/products/edit/:id"
+                  element={<EditProduct />}
                 ></Route>
                 <Route exact path="/admin/stock" element={<Stock />}></Route>
                 <Route

@@ -16,6 +16,7 @@ export default function CreateStock({history}) {
   const [count, setCount] = useState();
   
   const [sizeList, setSizeList] = useState([]);
+  
 
   useEffect(() => {
     dispatch(listProducts(''));
