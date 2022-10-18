@@ -17,9 +17,9 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
           'Content-Type': 'multipart/form-data',
         },
       };
-      console.log("check upload form data",formData);
+      
       const { data } = await Axios.post('/api/upload', formData, config);
-
+ 
       updateData(data, 'url');
 
       setUploading(false);
@@ -43,11 +43,14 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
     setImagesArray(newArr);
   };
 
+ 
+
   return (
     <div>
       {' '}
-     <form id="image">
+      <form id="image">
         <label>Upload Image</label>
+        <br />
         <input
           type="file"
           id="image-file"
@@ -56,44 +59,26 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
           // required={imagesArray[index]['url'] ? false : true}
           onChange={uploadFileHandler}
         />
-        <div class="input-group col-xs-12">
-          <input
-            type="text"
-            class="form-control file-upload-info"
-            disabled
-            placeholder="Upload Image"
-          />
-          <span class="input-group-append">
-            <button class="file-upload-browse btn btn-primary" type="button">
-              Upload
-            </button>
-          </span>
+
+        <img
+          src={
+            imagesArray[index]['url'].path === undefined
+              ? process.env.PUBLIC_URL + '/images/select_image.png'
+              : `${process.env.REACT_APP_API_URL}${imagesArray[index]['url'].path}`
+          }
+          height="100"
+        />
+
+        {uploading && <Loader />}
+
+        <div className="d-flex justify-content-end">
+          <a onClick={removeItem}>
+            <i
+              aria-hidden="true"
+              className="text-danger fa fa-minus-circle"
+            ></i>
+          </a>
         </div>
-      {/* </div> */}
-      {/* <form class="forms-sample" id="image"> */}
-        {/* <label>Image</label> */}
-
-        <img src={imagesArray[index]['url']} height="100" />
-        {/* <input type="file"  id="image-file" class="file-upload-default" name="img[]" required={imagesArray[index]['url'] ? false : true}
-          onChange={uploadFileHandler} /> */}
-
-        {uploading && <Loader />}
-
-        {/* <label>Price</label>
-        <input
-          type="text"
-          placeholder="Enter price"
-          value={imagesArray[index]['price']}
-          onChange={(e) => updateData(e.target.value, 'price')}
-        /> */}
-
-        {uploading && <Loader />}
-      {/* </form> */}
-      <div className="d-flex justify-content-end">
-        <a onClick={removeItem}>
-          <i aria-hidden="true" className="text-danger fa fa-minus-circle"></i>
-        </a>
-      </div>
       </form>
     </div>
   );

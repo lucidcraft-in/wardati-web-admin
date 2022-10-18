@@ -75,6 +75,7 @@ export default function StockList({ history, match }) {
     const stocks_ = stocks.filter((e) => e.product === value);
     setStockList(stocks_);
   }
+ 
 
   return (
     <div className='main-panel'>
