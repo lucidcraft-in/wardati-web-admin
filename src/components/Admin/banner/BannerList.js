@@ -12,8 +12,8 @@ const BannerList = ({ history }) => {
   const { userInfo } = userLogin;
 
     const bannerList = useSelector((state) => state.bannerList);
+    console.log(bannerList,'bannerList')
   const { loading, error, banners } = bannerList;
-  
     const bannerDelete = useSelector((state) => state.bannerDelete);
 
     const {
@@ -57,7 +57,7 @@ const BannerList = ({ history }) => {
     }
   };
 
-console.log(bannerList);
+console.log(bannerList,'hiiiiiiiiii');
   return (
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">

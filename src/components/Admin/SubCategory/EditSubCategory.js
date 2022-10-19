@@ -34,7 +34,8 @@ export default function EditSubCategory({ history, match }) {
   
     const categoryList = useSelector((state) => state.categoryList);
     const {   categories } = categoryList;
-  console.log(categories, 'categories');
+    
+  
   
   useEffect(() => {
     if (successUpdate) {
