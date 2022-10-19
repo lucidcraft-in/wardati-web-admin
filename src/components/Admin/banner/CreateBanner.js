@@ -67,7 +67,7 @@ const CreateBanner = () => {
         bannerPosition,
       })
     );
-    navigate('/lz-admin/banners');
+    navigate('/lz-admin/banner');
   };
 
   return (

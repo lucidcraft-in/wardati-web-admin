@@ -14,6 +14,7 @@ import EditUser from './components/Admin/Users/EditUser';
 
 import Products from './components/Admin/Products/ProductList';
 import CreateProduct from './components/Admin/Products/CreateProduct';
+import EditProduct from './components/Admin/Products/EditProduct';
 
 import Stock from './components/Admin/Stock/StockList';
 import CreateStock from './components/Admin/Stock/CreateStock';
@@ -89,6 +90,11 @@ function App() {
                     exact
                     path="/lz-admin/products/create"
                     element={<CreateProduct />}
+                  ></Route>
+                   <Route
+                    exact
+                    path="/lz-admin/product/edit/:id"
+                    element={<EditProduct />}
                   ></Route>
                   <Route
                     exact

@@ -25,12 +25,13 @@ const CreateProduct = ({ }) => {
     },
     
   ]);
-   const [isTrending, setIsTrending] = useState(true);
+ 
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
   const [duplicateSize, setDuplicateSize] = useState(false);
+  const [isTrending, setIsTrending] = useState(false);
   const [subCategory, setSubCategory] = useState([]);
   const [selectedSubCategory, setSelectedSubCategory] = useState(' ');
   const categoryList = useSelector((state) => state.categoryList)
@@ -101,8 +102,9 @@ const CreateProduct = ({ }) => {
     
     setSubCategory(list)
   }
-
-  console.log(imagesArray);
+  const setStatusOnClick = () => {
+    setIsTrending((isTrending) => !isTrending);
+  }
  
   return (
     <div class="row">
@@ -206,17 +208,19 @@ const CreateProduct = ({ }) => {
                 </div>
               </div>
 
-              {/* <div class="form-group">
-                  
-                      <label>Upload Image</label> */}
-              {/* <input type="file" name="img[]" class="file-upload-default"/>
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image"/>
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                      </div> */}
-              {/* </div> */}
+             
+              <div class="form-check">
+                <label>
+                  <input
+                    type="checkbox"
+                    style={{ width: '22px', height: '22px' }}
+                    checked={isTrending}
+                    onChange={setStatusOnClick}
+                  />
+                  &nbsp;&nbsp; Is Trending
+                </label>
+              </div>
+             
 
               <button type="submit" class="btn btn-primary mr-2">
                 Submit
