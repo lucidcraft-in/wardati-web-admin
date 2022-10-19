@@ -61,6 +61,8 @@ import {
   bannerListReducer,
   bannerCreateReducer,
   bannerDeleteReducer,
+  bannerDetailsReducer,
+  bannerUpdateReducer,
 } from './reducers/bannerReducer';
 
 const reducer = combineReducers({
@@ -116,8 +118,10 @@ const reducer = combineReducers({
   stockDelete: stockDeleteReducer,
   productStock: stockDetailsReducerByProduct,
 
-  bannerList: bannerListReducer,
+  bannerLists: bannerListReducer,
+  bannerDetails: bannerDetailsReducer,
   bannerCreate: bannerCreateReducer,
+  bannerUpdate :bannerUpdateReducer,
   bannerDelete: bannerDeleteReducer,
 });
  

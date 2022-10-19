@@ -76,6 +76,7 @@ const CreateProduct = ({ }) => {
         description,
         countInStock,
         promotionPercentage,
+        isTrending,
       })
     );
      navigate('/lz-admin/products');
@@ -95,7 +96,7 @@ const CreateProduct = ({ }) => {
   const changeCategory = (value) => {
     setCategory(value);
 
-   console.log(subCategories);
+ 
 
     let list = subCategories.filter((e) => e.category === value);
     

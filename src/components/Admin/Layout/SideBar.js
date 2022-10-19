@@ -270,7 +270,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/banner"
+              to="/lz-admin/banners"
               aria-expanded="false"
               aria-controls="ui-basic"
             >

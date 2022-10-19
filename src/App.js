@@ -58,7 +58,7 @@ function App() {
                   <Route exact path="/" element={<DashBoard />}></Route>
                   <Route
                     exact
-                    path="/lz-admin/banner"
+                    path="/lz-admin/banners"
                     element={<BannerList />}
                   ></Route>
                   <Route
