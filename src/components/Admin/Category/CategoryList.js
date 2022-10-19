@@ -19,7 +19,7 @@ export default function CategoryList({ history, match }) {
       success: successDelete,
     } = categoryDelete
 
-  console.log(categories)
+  
 
   const categoryCreate = useSelector((state) => state.categoryCreate)
   const {
@@ -74,7 +74,7 @@ const createCategoryHandler = () => {
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/admin/category/create"
+                to="/lz-admin/category/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >

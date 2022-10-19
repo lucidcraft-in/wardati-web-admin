@@ -270,6 +270,18 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
+              to="/lz-admin/banner"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Banner</span>
+            </Link>
+          </li>
+          <li class="nav-item">
+            <Link
+              class="nav-link"
+              data-toggle="collapse"
               to="/lz-admin/products"
               aria-expanded="false"
               aria-controls="form-elements"
