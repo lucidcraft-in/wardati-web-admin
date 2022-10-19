@@ -183,9 +183,9 @@ export const createProduct = (product) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-
+console.log('product', product);
     const { data } = await Axios.post(`/api/products`, product, config);
-    console.log('data', data);
+    
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,

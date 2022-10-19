@@ -25,7 +25,7 @@ const CreateProduct = ({ }) => {
     },
     
   ]);
- 
+   const [isTrending, setIsTrending] = useState(true);
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
@@ -75,6 +75,7 @@ const CreateProduct = ({ }) => {
         description,
         countInStock,
         promotionPercentage,
+        isTrending,
       })
     );
      navigate('/lz-admin/products');
@@ -94,12 +95,14 @@ const CreateProduct = ({ }) => {
   const changeCategory = (value) => {
     setCategory(value);
 
-   console.log(subCategories);
+ 
 
     let list = subCategories.filter((e) => e.category === value);
     
     setSubCategory(list)
   }
+
+  console.log(imagesArray);
  
   return (
     <div class="row">

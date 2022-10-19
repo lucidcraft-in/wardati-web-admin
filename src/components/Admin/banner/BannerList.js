@@ -11,8 +11,8 @@ const BannerList = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-    const bannerList = useSelector((state) => state.bannerList);
-  const { loading, error, banners } = bannerList;
+    const bannerLists = useSelector((state) => state.bannerLists);
+  const { loading, error, banners } = bannerLists;
   
     const bannerDelete = useSelector((state) => state.bannerDelete);
 
@@ -57,7 +57,7 @@ const BannerList = ({ history }) => {
     }
   };
 
-console.log(bannerList);
+ 
   return (
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">
@@ -82,48 +82,48 @@ console.log(bannerList);
 
             <div className="row">
               <div class="row py-5">
-              
-                <div class="col-lg-4">
-                  <figure class="rounded p-3 bg-white shadow-sm">
-                    <img
-                      src="https://i.postimg.cc/CxckQJW1/6.png"
-                      alt=""
-                      class="w-100 card-img-top"
-                    />
-                    <figcaption class="p-4 card-img-bottom">
-                      <h2 class="h5 font-weight-bold mb-2 font-italic">
-                        Image Caption
-                      </h2>
-                      <p class="mb-0 text-small text-muted font-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor.
-                      </p>
-                    </figcaption>
-                    <div class="d-flex flex-row">
-                      <div class="p-2">
-                        {' '}
-                        {/* <Link to={`/lz-admin/stock/edit/${stock._id}`}> */}
-                        <button
-                          type="button"
-                          class="btn btn-outline-dark btn-sm"
-                        >
-                          Edit
-                        </button>
-                        {/* </Link> */}
+                {banners.map((banner) => (
+                  <div class="col-lg-4">
+                    <figure class="rounded p-3 bg-white shadow-sm">
+                      <img
+                        src={`${process.env.REACT_APP_API_URL}${banner.image}`}
+                        alt=""
+                        class="h-50 card-img-top"
+                      />
+                      <figcaption class="p-4 card-img-bottom">
+                        <h2 class="h5 font-weight-bold mb-2 font-italic">
+                          {banner.title} [ {banner.bannerPosition} Slide]
+                        </h2>
+                        <p class="mb-0 text-small text-muted font-italic">
+                          {banner.description}
+                        </p>
+                      </figcaption>
+                      <div class="d-flex flex-row">
+                        <div class="p-2">
+                          {' '}
+                          <Link to={`/lz-admin/banner/edit/${banner._id}`}>
+                          <button
+                            type="button"
+                            class="btn btn-outline-dark btn-sm"
+                          >
+                            Edit
+                          </button>
+                          </Link>
+                        </div>
+                        <div class="p-2">
+                          {' '}
+                          <button
+                            type="button"
+                            class="btn btn-outline-danger btn-sm"
+                             onClick={() => deleteHandler(banner._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
-                      <div class="p-2">
-                        {' '}
-                        <button
-                          type="button"
-                          class="btn btn-outline-danger btn-sm"
-                          // onClick={() => deleteHandler(stock._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </figure>
-                </div>
+                    </figure>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

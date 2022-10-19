@@ -78,7 +78,7 @@ const CreateBanner = () => {
             <h4 class="card-title">Create Banner</h4>
             <form class="forms-sample" onSubmit={submitHandler}>
               <div class="form-group">
-                <label for="exampleInputName">Upload Image</label>
+                <label for="exampleInputName">Banner position</label>
                 <select
                   class="form-control"
                   onChange={(e) => setBannerPosition(e.target.value)}
