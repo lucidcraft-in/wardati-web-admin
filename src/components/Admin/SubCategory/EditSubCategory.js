@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SUB_CATEGORY_UPDATE_RESET } from '../../../constants/subCategoryConstant';
 import {
   listSubCategoryDetails,
-  listSubCategories,
   updateSubCategory,
 } from '../../../actions/subcategoryAction';
 import { listCategories } from '../../../actions/categoryActions';
@@ -19,8 +18,8 @@ export default function EditSubCategory({ history, match }) {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [tittle, setTittle] = useState('');
-  const [category, setCategory] = useState('weert');
-console.log(category,'category')
+  const [category, setCategory] = useState('');
+
   const dispatch = useDispatch();
   
     const subCategoryDetails = useSelector((state) => state.subCategoryDetails);
@@ -35,7 +34,8 @@ console.log(category,'category')
   
     const categoryList = useSelector((state) => state.categoryList);
     const {   categories } = categoryList;
- 
+  console.log(categories, 'categories');
+  
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: SUB_CATEGORY_UPDATE_RESET });
@@ -44,9 +44,9 @@ console.log(category,'category')
       if (!subCategory.name || subCategory._id !== id) {
         
         dispatch(listSubCategoryDetails(id));
-         dispatch(listSubCategories(''));
-      } else {
         
+      } else {
+         dispatch(listCategories(''));
         setName(subCategory.name);
         setTittle(subCategory.tittle);
         setCategory(subCategory.category);

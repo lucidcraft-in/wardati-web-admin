@@ -65,16 +65,16 @@ export const listCategoryDetails = (id) => async (dispatch) => {
   }
 }
 export const createCategory = (category) => async (dispatch, getState) => {
-  console.log('hiiiiiiiii')
+  
     try {
       dispatch({
         type: CATEGORY_CREATE_REQUEST,
       });
-      console.log('category')
+   
       const {
         userLogin: { userInfo },
       } = getState();
-  console.log(userInfo,'userInfo')
+ 
       const config = {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,

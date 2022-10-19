@@ -86,7 +86,7 @@ export default function PromotionList({ history, match }) {
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/lz-admin/promotions/create"
+                to="/lz-admin/promotion/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >

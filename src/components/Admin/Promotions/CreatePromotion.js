@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import Axios from '../../../axios/axios';
 import { useDispatch } from 'react-redux';
 import { createPromotion } from '../../../actions/promotionAction';
 import { useNavigate } from "react-router-dom";
@@ -46,7 +46,7 @@ export default function CreatePromotion() {
         setPromoCode(val);
            
     
-        const { data } = await axios.get(`/api/promotions/${val}`,'', config);
+        const { data } = await Axios.get(`/api/promotions/${val}`, '', config);
     
     
          
@@ -59,58 +59,77 @@ export default function CreatePromotion() {
     }
 
   return (
-    
-        <div class="row">
-          <div class="col-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Create Promotion</h4>
-                <form class="forms-sample" onSubmit={submitHandler}>
-      
-                    {/* <div class="form-check">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Create Promotion</h4>
+            <form class="forms-sample" onSubmit={submitHandler}>
+              {/* <div class="form-check">
                       <label for="exampleInputName1" className='form-check-label'> Promotion Active Status</label>
                       <input type="checkbox" class="form-check-input" id="exampleInputName1" placeholder=" Name"/>
                     </div> */}
-                      <div class="form-group">
-                      <label for="exampleInputName1"> Name</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder=" Name" value={name}
+              <div class="form-group">
+                <label for="exampleInputName1"> Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName1"
+                  placeholder=" Name"
+                  value={name}
                   onChange={(e) => setName(e.target.value)}
-                  required={true}/>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputphone">Phone</label>
-                      <input type="number" class="form-control" id="exampleInputphone" placeholder="Phone Number"  value={phone}
+                  required={true}
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputphone">Phone</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputphone"
+                  placeholder="Phone Number"
+                  value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  required={true}/>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPromoCode"> Promo Code</label>
-                      <input type="text" class="form-control" id="exampleInputPromoCode" placeholder=" PromoCode"  value={promoCode}
+                  required={true}
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPromoCode"> Promo Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPromoCode"
+                  placeholder=" PromoCode"
+                  value={promoCode}
                   onChange={(e) => checkPromoCode(e.target.value)}
-                  required={true}/>
-                    </div>
-                    {promoCodeAvailable === false ? (
+                  required={true}
+                />
+              </div>
+              {promoCodeAvailable === false ? (
                 <div style={{ color: 'red' }}> Promo code not available</div>
               ) : (
                 ''
               )}
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  defaultChecked={status}
-                  // onChange={(e) => setStatus(e.target.value)}
-                  onClick={setStatusOnClick}/>
-                        <label class="form-check-label" for="flexCheckDefault">
-                             Promotion Active Status
-                        </label>
-                    </div>
-                    
-                    
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
+              <div class="form-check">
+                <input
+                  class=" "
+                  type="checkbox"
+                  value=""
+                  defaultChecked={status}
+                  style={{ width: '22px', height: '22px' }}
+                  onClick={setStatusOnClick}
+                />
+                &nbsp;&nbsp;   Promotion Active Status
               </div>
-            </div>
+
+              <button type="submit" class="btn btn-primary mr-2">
+                Submit
+              </button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
+          </div>
         </div>
-      
-  )
+      </div>
+    </div>
+  );
 }

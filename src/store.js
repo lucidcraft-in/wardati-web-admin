@@ -57,6 +57,12 @@ import {
   stockDetailsReducerByProduct,
 } from './reducers/stockReducer';
 
+import {
+  bannerListReducer,
+  bannerCreateReducer,
+  bannerDeleteReducer,
+} from './reducers/bannerReducer';
+
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
@@ -109,6 +115,10 @@ const reducer = combineReducers({
   stockDetails: stockDetailsReducer,
   stockDelete: stockDeleteReducer,
   productStock: stockDetailsReducerByProduct,
+
+  bannerList: bannerListReducer,
+  bannerCreate: bannerCreateReducer,
+  bannerDelete: bannerDeleteReducer,
 });
  
 
