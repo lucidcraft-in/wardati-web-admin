@@ -21,7 +21,7 @@ export const listBanners = () => async (dispatch) => {
   console.log(data, 'data');
     dispatch({
       type: BANNER_LIST_SUCCESS,
-      payload: data.banners,
+      payload: data,
     });
   } catch (error) {
     dispatch({
