@@ -36,7 +36,7 @@ const BannerList = ({ history }) => {
     }
 
     if (successCreate) {
-      history.push(`/lz-admin/banner/edit/${createBanner._id}`);
+      dispatch(listBanners(''));
     } else {
       
       dispatch(listBanners(''));
@@ -56,7 +56,7 @@ const BannerList = ({ history }) => {
       dispatch(deleteBanner(id));
     }
   };
-
+console.log("test")
  
   return (
     <div class="row">

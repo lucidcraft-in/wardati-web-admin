@@ -48,7 +48,7 @@ export default function StockList({ history, match }) {
     }
 
     if (successCreate) {
-      
+      dispatch(listStock('', ));
     } else { 
       dispatch(listStock('', ));
       dispatch(listProducts(''));

@@ -4,7 +4,7 @@ import { logout } from '../../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 export default function SideBar() {
   const dispatch = useDispatch();
-  const logoutHandler = () => {
+  const logoutHandler = () => {   
     dispatch(logout());
   };
   return (

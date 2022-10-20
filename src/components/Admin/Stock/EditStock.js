@@ -14,8 +14,10 @@ const  EditStock =({history}) =>{
   const [product, setProduct] = useState('');
 
   const [size, setSize] = useState('');
+  console.log(size,'size')
   const [price, setPrice] = useState();
-  const [sellingprice, setSellingPrice] = useState();
+  const [sellingPrice, setSellingPrice] = useState();
+  
   const [count, setCount] = useState();
 
   const [sizeList, setSizeList] = useState([]);
@@ -44,6 +46,8 @@ const  EditStock =({history}) =>{
         
         setPrice(stock.stock.price);
         setCount(stock.stock.count);
+        setSize(stock.stock.size)
+        setSellingPrice(stock.stock.sellingPrice)
       }
     }
   }, [dispatch, history, id, stock, successUpdate]);
@@ -66,6 +70,7 @@ const  EditStock =({history}) =>{
         size,
         price,
         count,
+        sellingPrice
       })
     );
   
@@ -122,7 +127,7 @@ const  EditStock =({history}) =>{
                       class="form-control"
                       id="exampleInputPrice1"
                       placeholder="Selling Price"
-                      value={sellingprice}
+                      value={sellingPrice}
                       onChange={(e) => setSellingPrice(e.target.value)}
                       required={true}
                     />

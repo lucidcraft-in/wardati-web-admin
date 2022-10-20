@@ -120,7 +120,7 @@ export const createSubCategory = (promotion) => async (dispatch, getState) => {
 
     const { data } = await Axios.post(`/api/subcategory`, promotion, config);
 
-    console.log(data);
+ 
 
     dispatch({
       type: SUB_CATEGORY_CREATE_SUCCESS,
