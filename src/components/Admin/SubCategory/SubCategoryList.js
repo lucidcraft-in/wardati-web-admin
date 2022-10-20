@@ -29,6 +29,15 @@ export default function SubCategoryList({ history, match }) {
     success: successDelete,
   } = subCategoryDelete;
 
+  
+  const subCategoryCreate = useSelector((state) => state.subCategoryCreate)
+  const {
+      loading: loadingCreate,
+      error: errorCreate,
+      success: successCreate,
+      subCategory: createSubCategory,
+  } = subCategoryCreate;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -38,9 +47,20 @@ export default function SubCategoryList({ history, match }) {
     if (!userInfo || !userInfo.isAdmin) {
       navigate('/login');
     }
+ 
+    if (successCreate) {
+      dispatch(listSubCategories('',pageNumber ));
+    } else {
+      dispatch(listSubCategories('',pageNumber ));
+    }
 
-    dispatch(listSubCategories('',pageNumber ));
-  }, [dispatch, history, userInfo,pageNumber ]);
+   
+  }, [    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createSubCategory,]);
    
 
 
@@ -49,6 +69,8 @@ export default function SubCategoryList({ history, match }) {
         dispatch(deleteSubCategory(id));
       }
   };
+
+ 
   return (
     <div class="row">
       <div class="col-lg-12 grid-margin stretch-card">

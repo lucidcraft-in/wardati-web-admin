@@ -49,7 +49,7 @@ export default function PromotionList({ history, match }) {
     }
 
     if (successCreate) {
-      history.push(`/lz-admin/promotion/${createdPromotion._id}/edit`);
+      dispatch(listPromotions('',pageNumber));
     } else {
       dispatch(listPromotions('',pageNumber));
     }

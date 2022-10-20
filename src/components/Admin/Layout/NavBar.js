@@ -1,6 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { logout } from '../../../actions/userActions';
+import { useDispatch } from 'react-redux';
 
 export default function NavBar() {
+  const dispatch = useDispatch();
+  const logoutHandler = () => {   
+    dispatch(logout());
+  };
   return (
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -129,9 +136,12 @@ export default function NavBar() {
                 Settings
               </a>
               <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
-                Logout
+              <Link class="nav-link" onClick={logoutHandler} to="">
+              <i class="ti-power-off text-primary"></i>
+              <span class="menu-title">Logout</span>
+            </Link>
               </a>
+             
             </div>
           </li>
           <li class="nav-item nav-settings d-none d-lg-flex">

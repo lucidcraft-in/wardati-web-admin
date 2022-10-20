@@ -47,6 +47,7 @@ const ProductList = ({ history, match }) => {
 
     if (successCreate) {
       // history.push(`/admin/product/edit/${createdProduct._id}`);
+      dispatch(listProducts('', pageNumber));
     } else {
       dispatch(listProducts('', pageNumber));
     }

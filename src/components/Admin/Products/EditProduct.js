@@ -20,6 +20,7 @@ import { PRODUCT_UPDATE_RESET } from '../../../constants/productConstants';
 export default function EditProduct({  history }) {
   const {  id } = useParams();
   const [name, setName] = useState('');
+  console.log('name',name)
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -59,6 +60,7 @@ export default function EditProduct({  history }) {
   
     dispatch(
       updateProduct({
+        _id: id,
         name,
         imagesArray,
         brand,
@@ -80,7 +82,7 @@ export default function EditProduct({  history }) {
     };
    setImagesArray([...imagesArray, obj]);
   }
-   
+   console.log(imagesArray,'imagesArray')
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });

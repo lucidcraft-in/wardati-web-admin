@@ -56,12 +56,13 @@ const EditPromotion = ({ match, history }) => {
     const submitHandler = (e) => {
       e.preventDefault();
       dispatch(
-        // createPromotion({
-        //   name,
-        //   phone,
-        //   promoCode,
-        //   status,
-        // })
+        updatePromotion({
+          _id:id,
+          name,
+          phone,
+          promoCode,
+          status,
+        })
       );
 
       navigate('/lz-admin/promotions');
