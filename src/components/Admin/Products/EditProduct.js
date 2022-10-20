@@ -25,13 +25,16 @@ export default function EditProduct({  history }) {
   const [description, setDescription] = useState('');
   // const [imagesArray, setImagesArray] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  console.log(subCategory,'subCategory')
   const [promotionPercentage, setPromotionCodePercentage] = useState(0);
   const [countInStock, setCountInStock] = useState(0);
   const [selectedSubCategory, setSelectedSubCategory] = useState(' ');
+ 
   const categoryList = useSelector((state) => state.categoryList)
   const { categories } = categoryList;
   const subCategoryList = useSelector((state) => state.subCategoryList);
    const { subCategories } = subCategoryList;
+  //  console.log(subCategories,'subCategories')
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [imagesArray, setImagesArray] = useState([
@@ -101,6 +104,8 @@ export default function EditProduct({  history }) {
         setDescription(product.description);
         setImagesArray(product.images);
         setPromotionCodePercentage(product.promotionPercentage);
+        changeCategory(product.category)
+        
       }
     }
   }, [dispatch, history, id, product, successUpdate]);
@@ -117,9 +122,8 @@ export default function EditProduct({  history }) {
   const changeCategory = (value) => {
     setCategory(value);
 
-   console.log(subCategories);
-
     let list = subCategories.filter((e) => e.category === value);
+    console.log(list,'list')
     
     setSubCategory(list)
   }
@@ -191,7 +195,7 @@ export default function EditProduct({  history }) {
                   class="form-control"
                   onChange={(e) => setSelectedSubCategory(e.target.value)}
                   required={true}
-                  value={subCategory}
+                  value={selectedSubCategory}
                 >
                   <option>Select Sub Category</option>
                   {subCategory.map((obj) => (
