@@ -128,7 +128,7 @@ const EditBanner = () => {
                   type="file"
                   class="form-control"
                   onChange={uploadFileHandler}
-                  required={true}
+                  
                 />
               </div>
               <img

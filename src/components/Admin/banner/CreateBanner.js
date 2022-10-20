@@ -1,5 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import Axios from '../../../axios/axios';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -67,7 +68,7 @@ const CreateBanner = () => {
         bannerPosition,
       })
     );
-    navigate('/lz-admin/banner');
+    navigate('/lz-admin/banners');
   };
 
   return (
@@ -137,8 +138,13 @@ const CreateBanner = () => {
               <button type="submit" class="btn btn-primary mr-2">
                 Submit
               </button>
+              <Link to='/lz-admin/banners'>
               <button class="btn btn-light">Cancel</button>
+              </Link>
+              
+              
             </form>
+            
           </div>
         </div>
       </div>

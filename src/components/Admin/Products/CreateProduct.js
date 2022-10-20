@@ -225,7 +225,10 @@ const CreateProduct = ({ }) => {
               <button type="submit" class="btn btn-primary mr-2">
                 Submit
               </button>
+              <Link to= '/lz-admin/products'>
               <button class="btn btn-light">Cancel</button>
+              </Link>
+              
             </form>
           </div>
         </div>

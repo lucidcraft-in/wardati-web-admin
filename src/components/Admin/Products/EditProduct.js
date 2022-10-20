@@ -23,7 +23,7 @@ export default function EditProduct({  history }) {
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-
+  // const [imagesArray, setImagesArray] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
   const [promotionPercentage, setPromotionCodePercentage] = useState(0);
   const [countInStock, setCountInStock] = useState(0);
@@ -34,6 +34,13 @@ export default function EditProduct({  history }) {
    const { subCategories } = subCategoryList;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [imagesArray, setImagesArray] = useState([
+    {
+      
+      url: '',
+    },
+    
+  ]);
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -50,7 +57,7 @@ export default function EditProduct({  history }) {
     dispatch(
       updateProduct({
         name,
-        // imagesArray,
+        imagesArray,
         brand,
         category,
         selectedSubCategory,
@@ -62,6 +69,14 @@ export default function EditProduct({  history }) {
      navigate('/lz-admin/products');
    
   };
+  const addImage = () => {
+   
+    let obj = {
+      price: 0,
+      url: '',
+    };
+   setImagesArray([...imagesArray, obj]);
+  }
    
   useEffect(() => {
     if (successUpdate) {
@@ -84,11 +99,20 @@ export default function EditProduct({  history }) {
         setCountInStock(product.countInStock);
         // setStockArray(product.stock);
         setDescription(product.description);
-        // setImagesArray(product.images);
+        setImagesArray(product.images);
         setPromotionCodePercentage(product.promotionPercentage);
       }
     }
   }, [dispatch, history, id, product, successUpdate]);
+  let images = imagesArray.map((image, index) => (
+    <div key={index} className="card p-2 mt-1">
+      <SetImage
+        imageIndex={index}
+        setImagesArray={setImagesArray}
+        imagesArray={imagesArray}
+      />
+    </div>
+  ));
 
   const changeCategory = (value) => {
     setCategory(value);
@@ -189,9 +213,9 @@ export default function EditProduct({  history }) {
                 ></textarea>
               </div>
               <hr />
-            
+              {images}
 
-              {/* <div class="d-flex">
+              <div class="d-flex">
                 <div class="p-2"> </div>
                 <div class="p-2"> </div>
                 <div class="ml-auto p-2">
@@ -202,7 +226,7 @@ export default function EditProduct({  history }) {
                     Add image
                   </a>
                 </div>
-              </div> */}
+              </div>
 
              
               <div class="form-check">

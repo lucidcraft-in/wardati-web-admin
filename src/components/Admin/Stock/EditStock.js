@@ -77,7 +77,7 @@ const  EditStock =({history}) =>{
           <div class="col-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Create Stock</h4>
+                <h4 class="card-title">Edit Stock</h4>
                 <form class="forms-sample" onSubmit={submitHandler}>
                   <div class="form-group">
                     <label for="exampleSelectProduct">Product</label>
