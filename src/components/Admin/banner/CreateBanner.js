@@ -46,7 +46,7 @@ const CreateBanner = () => {
 
      const { data } = await Axios.post('/api/upload', formData, config);
 
-     setImage(data.path);
+     setImage(data);
 
      setUploading(false);
    } catch (error) {

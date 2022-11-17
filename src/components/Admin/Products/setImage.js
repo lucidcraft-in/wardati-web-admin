@@ -38,7 +38,7 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
 
   const updateData = (value, key) => {
     let newArr = [...imagesArray];
-    newArr[index][key] = value.path;
+    newArr[index][key] = value;
 
     console.log(newArr, 'newArr');
     setImagesArray(newArr);
@@ -65,7 +65,7 @@ export default function SetImage({ imageIndex, setImagesArray, imagesArray }) {
           src={
             imagesArray[index].url === ''
               ? process.env.PUBLIC_URL + '/images/select_image.png'
-              : `${process.env.REACT_APP_API_URL}${imagesArray[index].url}`
+              : `${imagesArray[index].url}`
           }
           height="100"
         />

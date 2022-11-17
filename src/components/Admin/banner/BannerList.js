@@ -86,7 +86,7 @@ console.log("test")
                   <div class="col-lg-4">
                     <figure class="rounded p-3 bg-white shadow-sm">
                       <img
-                        src={`${process.env.REACT_APP_API_URL}${banner.image}`}
+                        src={`${banner.image}`}
                         alt=""
                         class="h-50 card-img-top"
                       />

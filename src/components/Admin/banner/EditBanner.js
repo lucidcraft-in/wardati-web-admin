@@ -75,7 +75,7 @@ const EditBanner = () => {
 
       const { data } = await Axios.post('/api/upload', formData, config);
 
-      setImage(data.path);
+      setImage(data);
 
       setUploading(false);
     } catch (error) {
@@ -135,7 +135,7 @@ const EditBanner = () => {
                 src={
                   image === ''
                     ? process.env.PUBLIC_URL + '/images/select_image.png'
-                    : `${process.env.REACT_APP_API_URL}${image}`
+                    : `${image}`
                 }
                 height="100"
               />

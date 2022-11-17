@@ -78,7 +78,7 @@ const submitHandler = (e) => {
 
       const { data } = await Axios.post('/api/upload', formData, config);
 
-      setImage(data.path);
+      setImage(data);
 
       setUploading(false);
     } catch (error) {
@@ -110,7 +110,7 @@ const submitHandler = (e) => {
                 src={
                   image === ''
                     ? process.env.PUBLIC_URL + '/images/select_image.png'
-                    : `${process.env.REACT_APP_API_URL}${image}`
+                    : `${image}`
                 }
                 height="100"
               />

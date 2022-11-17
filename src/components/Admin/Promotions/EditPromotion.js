@@ -39,7 +39,7 @@ const EditPromotion = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PROMOTION_UPDATE_RESET });
-      history.push('/admin/promotions');
+      history.push('/lz-admin/promotions');
     } else {
       if (!promotion?.promotion?.name || promotion?.promotion?._id !== id) {
         dispatch(listPromotionDetails(id));

@@ -86,7 +86,7 @@ export default function EditProduct({  history }) {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
-      navigate('/admin/products');
+      navigate('/lz-admin/products');
     } else {
       if (!product.name || product._id !== id) {
         dispatch(listProductDetails(id));
