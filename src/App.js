@@ -55,7 +55,11 @@ function App() {
             <div className="main-panel">
               <div className="content-wrapper">
                 <Routes>
-                  <Route exact path="/" element={<DashBoard />}></Route>
+                  <Route
+                    exact
+                    path="/lz-admin/"
+                    element={<DashBoard />}
+                  ></Route>
                   <Route
                     exact
                     path="/lz-admin/banners"
@@ -91,7 +95,7 @@ function App() {
                     path="/lz-admin/products/create"
                     element={<CreateProduct />}
                   ></Route>
-                   <Route
+                  <Route
                     exact
                     path="/lz-admin/product/edit/:id"
                     element={<EditProduct />}

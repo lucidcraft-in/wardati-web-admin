@@ -43,7 +43,7 @@ const  EditStock =({history}) =>{
        
         dispatch(listStockDetails(id));
       } else {
-        
+         setProduct(stock.stock.product);
         setPrice(stock.stock.price);
         setCount(stock.stock.count);
         setSize(stock.stock.size)

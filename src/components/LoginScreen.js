@@ -16,7 +16,7 @@ const LoginScreen = ({ location }) => {
     // const redirect = location.search ? location.search.split('=')[1] : '/'
     useEffect(() => {
         if (userInfo) {
-          navigate('/');
+          navigate('/lz-admin/');
         }
     }, [ userInfo])
     
