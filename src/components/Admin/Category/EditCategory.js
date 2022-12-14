@@ -33,7 +33,7 @@ export default function EditCategory({history, match}) {
   useEffect(() => {
       if (successUpdate) {
         dispatch({ type: CATEGORY_UPDATE_RESET })
-        navigate('/lz-admin/category');
+        navigate('/category');
       } else {
         if (!category.categoryName || category._id !== id) {
           dispatch(listCategoryDetails(id))
@@ -60,7 +60,7 @@ const submitHandler = (e) => {
       image
     })
   );
-  navigate('/lz-admin/category');
+  navigate('/category');
   }
 
   const uploadFileHandler = async (e) => {

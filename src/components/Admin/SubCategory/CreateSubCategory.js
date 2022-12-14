@@ -34,7 +34,7 @@ export default function CreateSubCategory() {
       })
     );
 
-    navigate('/lz-admin/subcategory');
+    navigate('/subcategory');
   };
   return (
    

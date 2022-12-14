@@ -84,7 +84,7 @@ const OrderList = ({  }) => {
                             <div className="col">
                               <Link
                                 class="nav-link"
-                                to={`/lz-admin/viewOrder/${order._id}`}
+                                to={`/viewOrder/${order._id}`}
                               >
                                 <button
                                   type="button"

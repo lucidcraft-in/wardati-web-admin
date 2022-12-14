@@ -71,7 +71,7 @@ export default function EditProduct({  history }) {
         promotionPercentage,
       })
     );
-     navigate('/lz-admin/products');
+     navigate('/products');
    
   };
   const addImage = () => {
@@ -86,7 +86,7 @@ export default function EditProduct({  history }) {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
-      navigate('/lz-admin/products');
+      navigate('/products');
     } else {
       if (!product.name || product._id !== id) {
         dispatch(listProductDetails(id));

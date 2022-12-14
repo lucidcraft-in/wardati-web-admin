@@ -33,7 +33,7 @@ export default function CreateCategory({ history }) {
       })
     );
      
-    navigate('/lz-admin/category');
+    navigate('/category');
   };
   
   const uploadFileHandler = async (e) => {

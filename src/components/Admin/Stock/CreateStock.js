@@ -45,7 +45,7 @@ const submitHandler = (e) => {
     })
   );
 
-  navigate('/lz-admin/stock');
+  navigate('/stock');
 };
 
 
@@ -125,7 +125,7 @@ const submitHandler = (e) => {
               <button type="submit" class="btn btn-primary mr-2">
                 Submit
               </button>
-              <Link to= '/lz-admin/stock'>
+              <Link to= '/stock'>
               <button class="btn btn-light">Cancel</button>
               </Link>
             </form>

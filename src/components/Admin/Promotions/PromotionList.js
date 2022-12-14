@@ -86,7 +86,7 @@ export default function PromotionList({ history, match }) {
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/lz-admin/promotion/create"
+                to="/promotion/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >
@@ -118,7 +118,7 @@ export default function PromotionList({ history, match }) {
                           <div class="p-2">
                             {' '}
                             <Link
-                              to={`/lz-admin/promotion/edit/${promotion._id}`}
+                              to={`/promotion/edit/${promotion._id}`}
                             >
                               <button
                                 type="button"

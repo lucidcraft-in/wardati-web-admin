@@ -79,7 +79,7 @@ const CreateProduct = ({ }) => {
         isTrending,
       })
     );
-     navigate('/lz-admin/products');
+     navigate('/products');
    
   };
 
@@ -225,7 +225,7 @@ const CreateProduct = ({ }) => {
               <button type="submit" class="btn btn-primary mr-2">
                 Submit
               </button>
-              <Link to= '/lz-admin/products'>
+              <Link to= '/products'>
               <button class="btn btn-light">Cancel</button>
               </Link>
               

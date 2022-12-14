@@ -40,7 +40,7 @@ export default function CategoryList({ history, match }) {
     }
 
     if (successCreate) {
-      history.push(`/lz-admin/category/edit/${createCategory._id}`)
+      history.push(`/category/edit/${createCategory._id}`)
     } else {
       dispatch(listCategories(''))
     }
@@ -74,7 +74,7 @@ const createCategoryHandler = () => {
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/lz-admin/category/create"
+                to="/category/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >
@@ -107,7 +107,7 @@ const createCategoryHandler = () => {
                           <div class="p-2">
                             {' '}
                             <Link
-                              to={`/lz-admin/category/edit/${category._id}`}
+                              to={`/category/edit/${category._id}`}
                             >
                               <button
                                 type="button"

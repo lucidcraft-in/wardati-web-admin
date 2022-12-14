@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import './App.css';
@@ -40,153 +40,124 @@ import LoginScreen from './components/LoginScreen';
 import BannerList from './components/Admin/banner/BannerList';
 import CreateBanner from './components/Admin/banner/CreateBanner';
 import EditBanner from './components/Admin/banner/EditBanner';
+import HomeDashboard from './components/HomeDashboard';
 
 function App() {
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  // const navigate = useNavigate();
+  
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { userInfo } = userLogin;
 
+  // useEffect(() => {
+  //   if (!userInfo.isAdmin) {
+  //     navigate('/login');
+  //   }
+  
+   
+  // }, [])
+  
+   
   return (
-    <Router>
-      {userInfo && userInfo.isAdmin ? (
-        <div className="container-scroller">
-          <NavBar />
-          <div className="container-fluid page-body-wrapper">
-            <SideBar />
-            <div className="main-panel">
-              <div className="content-wrapper">
-                <Routes>
-                  <Route
-                    exact
-                    path="/lz-admin/"
-                    element={<DashBoard />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/banners"
-                    element={<BannerList />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/banner/create"
-                    element={<CreateBanner />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/banner/edit/:id"
-                    element={<EditBanner />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/user/edit/:id"
-                    element={<EditUser />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/users"
-                    element={<Users />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/products"
-                    element={<Products />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/products/create"
-                    element={<CreateProduct />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/product/edit/:id"
-                    element={<EditProduct />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/stock"
-                    element={<Stock />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/stock/create"
-                    element={<CreateStock />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/stock/edit/:id"
-                    element={<EditStock />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/orders"
-                    element={<Orders />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/viewOrder/:id"
-                    element={<Order />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/promotions"
-                    element={<Promotions />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/promotion/create"
-                    element={<CreatePromotion />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/promotion/edit/:id"
-                    element={<EditPromotion />}
-                  ></Route>
-
-                  <Route
-                    exact
-                    path="/lz-admin/category"
-                    element={<Category />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/category/create"
-                    element={<CreateCategory />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/category/edit/:id"
-                    element={<EditCategory />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/subcategory"
-                    element={<SubCategory />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/subcategory/create"
-                    element={<CreateSubCategory />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/subcategory/edit/:id"
-                    element={<EditSubCategory />}
-                  ></Route>
-                  <Route
-                    exact
-                    path="/lz-admin/login"
-                    element={<LoginScreen />}
-                  />
-                </Routes>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <Routes>
-          <Route exact path="/lz-admin/login" element={<LoginScreen />} />
-        </Routes>
-      )}
-    </Router>
+    <div className="container-scroller">
+      <Routes>
+        <Route exact path="/login" element={<LoginScreen />} />
+        <Route element={<HomeDashboard />}>
+          {' '}
+          <Route exact path="/" element={<DashBoard />}></Route>
+          <Route
+            exact
+            path="/banners"
+            element={<BannerList />}
+          ></Route>
+          <Route
+            exact
+            path="/banner/create"
+            element={<CreateBanner />}
+          ></Route>
+          <Route
+            exact
+            path="/banner/edit/:id"
+            element={<EditBanner />}
+          ></Route>
+          <Route
+            exact
+            path="/user/edit/:id"
+            element={<EditUser />}
+          ></Route>
+          <Route exact path="/users" element={<Users />}></Route>
+          <Route exact path="/products" element={<Products />}></Route>
+          <Route
+            exact
+            path="/products/create"
+            element={<CreateProduct />}
+          ></Route>
+          <Route
+            exact
+            path="/product/edit/:id"
+            element={<EditProduct />}
+          ></Route>
+          <Route exact path="/stock" element={<Stock />}></Route>
+          <Route
+            exact
+            path="/stock/create"
+            element={<CreateStock />}
+          ></Route>
+          <Route
+            exact
+            path="/stock/edit/:id"
+            element={<EditStock />}
+          ></Route>
+          <Route exact path="/orders" element={<Orders />}></Route>
+          <Route
+            exact
+            path="/viewOrder/:id"
+            element={<Order />}
+          ></Route>
+          <Route
+            exact
+            path="/promotions"
+            element={<Promotions />}
+          ></Route>
+          <Route
+            exact
+            path="/promotion/create"
+            element={<CreatePromotion />}
+          ></Route>
+          <Route
+            exact
+            path="/promotion/edit/:id"
+            element={<EditPromotion />}
+          ></Route>
+          <Route exact path="/category" element={<Category />}></Route>
+          <Route
+            exact
+            path="/category/create"
+            element={<CreateCategory />}
+          ></Route>
+          <Route
+            exact
+            path="/category/edit/:id"
+            element={<EditCategory />}
+          ></Route>
+          <Route
+            exact
+            path="/subcategory"
+            element={<SubCategory />}
+          ></Route>
+          <Route
+            exact
+            path="/subcategory/create"
+            element={<CreateSubCategory />}
+          ></Route>
+          <Route
+            exact
+            path="/subcategory/edit/:id"
+            element={<EditSubCategory />}
+          ></Route>
+          <Route exact path="/login" element={<LoginScreen />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

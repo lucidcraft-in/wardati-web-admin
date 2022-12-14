@@ -87,7 +87,7 @@ export default function StockList({ history, match }) {
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/lz-admin/stock/create"
+                to="/stock/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >
@@ -121,7 +121,7 @@ export default function StockList({ history, match }) {
                           <div class="d-flex flex-row">
                             <div class="p-2">
                               {' '}
-                              <Link to={`/lz-admin/stock/edit/${stock._id}`}>
+                              <Link to={`/stock/edit/${stock._id}`}>
                                 <button
                                   type="button"
                                   class="btn btn-outline-dark btn-sm"

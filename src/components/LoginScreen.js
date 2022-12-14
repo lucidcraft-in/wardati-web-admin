@@ -16,7 +16,7 @@ const LoginScreen = ({ location }) => {
     // const redirect = location.search ? location.search.split('=')[1] : '/'
     useEffect(() => {
         if (userInfo) {
-          navigate('/lz-admin/');
+          navigate('/');
         }
     }, [ userInfo])
     
@@ -25,42 +25,42 @@ const LoginScreen = ({ location }) => {
         dispatch(login(email, password))
       }
     return (
-        <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-          <div class="content-wrapper d-flex align-items-center auth px-0">
-            <div class="row w-100 mx-0">
-              <div class="col-lg-4 mx-auto">
-                <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                  <div class="brand-logo">
+        <div className="container-scroller">
+        <div className="container-fluid page-body-wrapper full-page-wrapper">
+          <div className="content-wrapper d-flex align-items-center auth px-0">
+            <div className="row w-100 mx-0">
+              <div className="col-lg-4 mx-auto">
+                <div className="auth-form-light text-left py-5 px-4 px-sm-5">
+                  <div className="brand-logo">
                     {/* <img src="../../images/logo.svg" alt="logo"/> */}
                     Wardati
                   </div>
                   <h4>Hello! let's get started</h4>
-                  <h6 class="font-weight-light">Sign in to continue.</h6>
-                  <form onSubmit={submitHandler} class="pt-3">
-                    <div class="form-group">
+                  <h6 className="font-weight-light">Sign in to continue.</h6>
+                  <form onSubmit={submitHandler} className="pt-3">
+                    <div className="form-group">
                       <input type="email" value={email} className="form-control form-control-lg"  onChange={(e) => setEmail(e.target.value)} placeholder="Username" required/>
                     </div>
-                    <div class="form-group">
-                      <input type="password" value={password} class="form-control form-control-lg"  onChange={(e) => setPassword(e.target.value)}
+                    <div className="form-group">
+                      <input type="password" value={password} className="form-control form-control-lg"  onChange={(e) => setPassword(e.target.value)}
                   required placeholder="Password"/>
                     </div>
-                                    <div class="mt-3">
-                                    <input class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" value="SIGN IN" />
+                                    <div className="mt-3">
+                                    <input className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" value="SIGN IN" />
 
                     </div>
-                    <div class="my-2 d-flex justify-content-between align-items-center">
-                      <div class="form-check">
-                        <label class="form-check-label text-muted">
-                          <input type="checkbox" class="form-check-input"/>
+                    <div className="my-2 d-flex justify-content-between align-items-center">
+                      <div className="form-check">
+                        <label className="form-check-label text-muted">
+                          <input type="checkbox" className="form-check-input"/>
                           Keep me signed in
                         </label>
                       </div>
-                      <a href="#" class="auth-link text-black">Forgot password?</a>
+                      <a href="#" className="auth-link text-black">Forgot password?</a>
                     </div>
-                    {/* <div class="mb-2">
-                      <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                        <i class="ti-facebook mr-2"></i>Connect using facebook
+                    {/* <div className="mb-2">
+                      <button type="button" className="btn btn-block btn-facebook auth-form-btn">
+                        <i className="ti-facebook mr-2"></i>Connect using facebook
                       </button>
                     </div> */}
                   

@@ -40,7 +40,7 @@ export default function EditSubCategory({ history, match }) {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: SUB_CATEGORY_UPDATE_RESET });
-      navigate('/lz-admin/subcategory');
+      navigate('/subcategory');
     } else {
       if (!subCategory.name || subCategory._id !== id) {
         
@@ -67,7 +67,7 @@ export default function EditSubCategory({ history, match }) {
        })
      );
 
-     navigate('/lz-admin/subcategory');
+     navigate('/subcategory');
   };
 
   return (

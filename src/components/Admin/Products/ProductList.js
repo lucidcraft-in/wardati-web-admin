@@ -89,7 +89,7 @@ const ProductList = ({ history, match }) => {
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/lz-admin/products/create"
+                to="/products/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >
@@ -124,7 +124,7 @@ const ProductList = ({ history, match }) => {
                               {' '}
                               <Link
                                 class="nav-link"
-                                to={`/lz-admin/product/edit/${product._id}`}
+                                to={`/product/edit/${product._id}`}
                               >
                                 <button
                                   type="button"

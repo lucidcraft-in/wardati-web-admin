@@ -68,7 +68,7 @@ const CreateBanner = () => {
         bannerPosition,
       })
     );
-    navigate('/lz-admin/banners');
+    navigate('/banners');
   };
 
   return (
@@ -138,7 +138,7 @@ const CreateBanner = () => {
               <button type="submit" class="btn btn-primary mr-2">
                 Submit
               </button>
-              <Link to='/lz-admin/banners'>
+              <Link to='/banners'>
               <button class="btn btn-light">Cancel</button>
               </Link>
               

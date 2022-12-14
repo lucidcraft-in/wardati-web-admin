@@ -44,7 +44,7 @@ const EditBanner = () => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: BANNER_UPDATE_RESET });
-      navigate('/lz-admin/banners');
+      navigate('/banners');
     } else {
       if (!banner.title || banner._id !== id) {
        
@@ -97,7 +97,7 @@ const EditBanner = () => {
          bannerPosition,
        })
      );
-     navigate('/lz-admin/banners');
+     navigate('/banners');
    };
 
   

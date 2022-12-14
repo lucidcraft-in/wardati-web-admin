@@ -26,7 +26,7 @@ export default function CreatePromotion() {
       })
     );
 
-    navigate('/lz-admin/promotions');
+    navigate('/promotions');
   };
 
   const checkPromoCode = async (val) => {

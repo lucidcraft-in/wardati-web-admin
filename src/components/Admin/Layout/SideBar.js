@@ -258,7 +258,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/users"
+              to="/users"
               aria-expanded="false"
               aria-controls="ui-basic"
             >
@@ -270,7 +270,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/banners"
+              to="/banners"
               aria-expanded="false"
               aria-controls="ui-basic"
             >
@@ -282,7 +282,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/products"
+              to="/products"
               aria-expanded="false"
               aria-controls="form-elements"
             >
@@ -294,7 +294,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/stock"
+              to="/stock"
               aria-expanded="false"
               aria-controls="charts"
             >
@@ -306,7 +306,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/orders"
+              to="/orders"
               aria-expanded="false"
               aria-controls="tables"
             >
@@ -318,7 +318,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/promotions"
+              to="/promotions"
               aria-expanded="false"
               aria-controls="icons"
             >
@@ -330,7 +330,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/category"
+              to="/category"
               aria-expanded="false"
               aria-controls="auth"
             >
@@ -342,7 +342,7 @@ export default function SideBar() {
             <Link
               class="nav-link"
               data-toggle="collapse"
-              to="/lz-admin/subcategory"
+              to="/subcategory"
               aria-expanded="false"
               aria-controls="error"
             >

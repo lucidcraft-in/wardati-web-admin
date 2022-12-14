@@ -68,7 +68,7 @@ console.log("test")
               <Link
                 class="nav-link"
                 data-toggle="collapse"
-                to="/lz-admin/banner/create"
+                to="/banner/create"
                 aria-expanded="false"
                 aria-controls="charts"
               >
@@ -101,7 +101,7 @@ console.log("test")
                       <div class="d-flex flex-row">
                         <div class="p-2">
                           {' '}
-                          <Link to={`/lz-admin/banner/edit/${banner._id}`}>
+                          <Link to={`/banner/edit/${banner._id}`}>
                           <button
                             type="button"
                             class="btn btn-outline-dark btn-sm"
