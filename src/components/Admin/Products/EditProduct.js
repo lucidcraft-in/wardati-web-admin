@@ -20,16 +20,15 @@ import { PRODUCT_UPDATE_RESET } from '../../../constants/productConstants';
 export default function EditProduct({  history }) {
   const {  id } = useParams();
   const [name, setName] = useState('');
-  console.log('name',name)
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   // const [imagesArray, setImagesArray] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
-  console.log(subCategory,'subCategory')
   const [promotionPercentage, setPromotionCodePercentage] = useState(0);
   const [countInStock, setCountInStock] = useState(0);
   const [selectedSubCategory, setSelectedSubCategory] = useState(' ');
+  const [isTrending, setIsTrending] = useState(false);
  
   const categoryList = useSelector((state) => state.categoryList)
   const { categories } = categoryList;
@@ -55,6 +54,14 @@ export default function EditProduct({  history }) {
     success: successUpdate,
   } = productUpdate;
 
+
+  
+  useEffect(() => {
+    if (successUpdate) {
+      navigate('/products');
+    }
+  }, [dispatch, successUpdate]);
+
   const submitHandler = (e) => {
     e.preventDefault();
   
@@ -69,9 +76,10 @@ export default function EditProduct({  history }) {
         description,
         countInStock,
         promotionPercentage,
+        isTrending
       })
     );
-     navigate('/products');
+     
    
   };
   const addImage = () => {
@@ -82,7 +90,7 @@ export default function EditProduct({  history }) {
     };
    setImagesArray([...imagesArray, obj]);
   }
-   console.log(imagesArray,'imagesArray')
+   
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -107,6 +115,7 @@ export default function EditProduct({  history }) {
         setImagesArray(product.images);
         setPromotionCodePercentage(product.promotionPercentage);
         changeCategory(product.category)
+        setIsTrending(product.isTrending)
         
       }
     }
@@ -125,11 +134,15 @@ export default function EditProduct({  history }) {
     setCategory(value);
 
     let list = subCategories.filter((e) => e.category === value);
-    console.log(list,'list')
+
     
     setSubCategory(list)
   }
 
+  const changeIsTrending = (value) => {
+    
+    setIsTrending(value);
+  }
   return (
     <div class="row">
       <div class="col-12 grid-margin stretch-card">
@@ -238,6 +251,8 @@ export default function EditProduct({  history }) {
               <div class="form-check">
                 <label>
                   <input
+                    checked={isTrending?true:false}
+                     onChange={(e) => changeIsTrending(e.target.checked)}
                     type="checkbox"
                     style={{ width: '22px', height: '22px' }}
                    

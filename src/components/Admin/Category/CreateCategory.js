@@ -1,26 +1,34 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {createCategory} from '../../../actions/categoryActions'
-import { useNavigate } from "react-router-dom";
+import { createCategory } from '../../../actions/categoryActions';
+import { useNavigate } from 'react-router-dom';
 import Axios from '../../../axios/axios';
 
 import Loader from '../../Loader';
 
 export default function CreateCategory({ history }) {
-
   const [categoryName, setName] = useState('');
-    const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('');
   const [priority, setPriority] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState('');
-  
-    const navigate = useNavigate();
 
-    // console.log(categoryName,'categoryName');
-    // console.log(title,'title');
-    // console.log(priority,'priority');
+  const navigate = useNavigate();
+
+  const categoryCreate = useSelector((state) => state.categoryCreate);
+  const { success: categorycreateSuccess } = categoryCreate;
+  // console.log(categoryName,'categoryName');
+  // console.log(title,'title');
+  // console.log(priority,'priority');
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (categorycreateSuccess) {
+      navigate('/category');
+    }
+  }, [dispatch, categorycreateSuccess]);
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,10 +40,8 @@ export default function CreateCategory({ history }) {
         image,
       })
     );
-     
-    navigate('/category');
   };
-  
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();

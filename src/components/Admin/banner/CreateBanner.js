@@ -122,11 +122,12 @@ const CreateBanner = () => {
               <div class="form-group">
                 <label for="exampleSelectCategory">Link to</label>
                 <select
+                  required={true}
                   class="form-control"
                   onChange={(e) => setCategory(e.target.value)}
-                  required={true}
+                 
                 >
-                  <option>Select Category</option>
+                  <option disabled={true}>Select Category</option>
                   {categories.map((obj) => (
                     <option value={obj._id} key={obj._id}>
                       {obj.categoryName}

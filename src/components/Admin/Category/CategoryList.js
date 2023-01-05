@@ -39,18 +39,18 @@ export default function CategoryList({ history, match }) {
       history.push('/login')
     }
 
-    if (successCreate) {
-      history.push(`/category/edit/${createCategory._id}`)
-    } else {
+    // if (successCreate) {
+    //   history.push(`/category/edit/${createCategory._id}`)
+    // } else {
       dispatch(listCategories(''))
-    }
+    // }
   }, [
     dispatch,
     history,
     userInfo,
     successDelete,
     successCreate,
-    createCategory,
+  
    
 ])
 
