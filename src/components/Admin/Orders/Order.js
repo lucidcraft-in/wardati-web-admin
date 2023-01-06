@@ -30,6 +30,8 @@ const Order = ({ match }) => {
   const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const shippedCreate = useSelector((state) => state.orderShipped);
+  const { success:successShippingUpdate } = shippedCreate;
   if (!loading) {
     //   Calculate prices
     const addDecimals = (num) => {
@@ -40,43 +42,33 @@ const Order = ({ match }) => {
       order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
     );
   }
+ 
   useEffect(() => {
     if (!userInfo) {
       
       navigate('/login');
     }
 
-    const addPayPalScript = async () => {
-      const { data: clientId } = await Axios.get('/api/config/paypal');
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
-    };
+    
+   
 
-    if (!order || successPay || successDeliver || order._id !== orderId.id) {
+    if (!order || successPay || successDeliver || order._id !== orderId.id || successShippingUpdate) {
 
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId.id));
     } else if (!order.isPaid) {
-      if (!window.paypal) {
-        addPayPalScript();
-      } else {
-        setSdkReady(true);
-      }
+      // if (!window.paypal) {
+      //   addPayPalScript();
+      // } else {
+      //   setSdkReady(true);
+      // }
     }
-  }, [dispatch,  successPay, successDeliver, order]);
-  const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
-    dispatch(payOrder(orderId.id, paymentResult));
-  };
+  }, [dispatch,  successPay, successDeliver, order,successShippingUpdate]);
+  
 
   const deliverHandler = (e, status) => {
+    
    
     if (window.confirm('Are you sure')) {
       if (status === 0) {
@@ -86,7 +78,10 @@ const Order = ({ match }) => {
       }
     }
    // 
- };
+  };
+  
+console.log(order)
+
  return loading ? (
   <Loader />
 ) : error ? (
@@ -165,20 +160,20 @@ const Order = ({ match }) => {
                         <Row>
                           <Col md={2} sm={4} xs={3} lg={2}>
                             <Image
-                              src={item.image}
+                              src={item.productDetails.images[0].url}
                               alt={item.name}
                               fluid
                               rounded
                             />
                           </Col>
                           <Col md={6} sm={4} xs={4} lg={2}>
-                            <Link to={`/product/${item.product}`}>
-                              {item.name}
-                            </Link>
+                            
+                              {item.productDetails.name}
+                          
                           </Col>
                           <Col md={4} sm={4} xs={4} lg={2}>
-                            {item.qty} x AED {item.price} = AED{' '}
-                            {item.qty * item.price}
+                            {item.quantity} x AED {item.stockDetails.sellingPrice} = AED{' '}
+                            {item.quantity * item.stockDetails.sellingPrice}
                           </Col>
                         </Row>
                       </ListGroup.Item>
@@ -197,7 +192,7 @@ const Order = ({ match }) => {
                 <ListGroup.Item>
                   <Row>
                     <Col>Items</Col>
-                    <Col>AED{order.itemsPrice}</Col>
+                    <Col>AED{order.totalPrice}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
@@ -228,7 +223,7 @@ const Order = ({ match }) => {
                   {order.isShipped === false ? (
                     <Button
                       type="button"
-                      className="btn btn-block"
+                      className="btn btn-block btn-secondary"
                       onClick={(e) => deliverHandler(e, 0)}
                     >
                       Mark As Shipped
@@ -236,14 +231,14 @@ const Order = ({ match }) => {
                   ) : order.isDelivered === false ? (
                     <Button
                       type="button"
-                      className="btn btn-block"
+                      className="btn btn-block btn-primary"
                       onClick={(e) => deliverHandler(e, 1)}
                     >
                       Mark As Delivered
                     </Button>
                   ) : (
-                    <Button type="button" className="btn btn-block" disabled>
-                      Delivered
+                    <Button type="button" className="btn btn-block btn-success" disabled>
+                      Paid and Delivered
                     </Button>
                   )}
                 </ListGroup.Item>

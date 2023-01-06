@@ -193,6 +193,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
 
 export const shippingOrder = (order) => async (dispatch, getState) => {
   try {
+   
     dispatch({
       type: ORDER_SHIPPED_REQUEST,
     });
@@ -208,7 +209,7 @@ export const shippingOrder = (order) => async (dispatch, getState) => {
     };
 
     const { data } = await Axios.put(
-      `/api/orders/${order._id}/deliver`,
+      `/api/orders/${order._id}/shipped`,
       {},
       config
     );
