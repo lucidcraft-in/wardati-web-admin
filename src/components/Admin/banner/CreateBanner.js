@@ -127,7 +127,7 @@ const CreateBanner = () => {
                   onChange={(e) => setCategory(e.target.value)}
                  
                 >
-                  <option disabled={true}>Select Category</option>
+                  <option value="">Select Category</option>
                   {categories.map((obj) => (
                     <option value={obj._id} key={obj._id}>
                       {obj.categoryName}
